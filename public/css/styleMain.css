@@ -1,0 +1,18 @@
+:root {
+    --primary: #2D2929;
+    --secundary: #CF1111;
+    --third: #6058BA;
+    --fourth: #21DA33;
+    --fifth: #D9D9D9;
+    --sixth: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--sixth);
+}
