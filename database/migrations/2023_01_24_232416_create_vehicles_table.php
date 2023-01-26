@@ -20,7 +20,7 @@ class CreateVehiclesTable extends Migration
             $table->year('model');
             $table->string('brand', 20);
             $table->foreignId('customer_id')->constrained('customers')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('engine_id')->constrained('vehicles')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('engine_id')->nullable()->constrained('type_engines')->onUpdate('cascade')->onDelete('set null');
             $table->timestamps();
         });
     }
