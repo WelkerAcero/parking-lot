@@ -8,11 +8,8 @@
 }
 
 * {
-    margin: 0;
+    margin: 0px;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
-    background-color: var(--sixth);
+    border: 1px solid red;
 }

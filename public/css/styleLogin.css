@@ -1,0 +1,34 @@
+.container-main-login {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    padding: 50px 0px;
+    flex-wrap: wrap;
+}
+
+/* ***************** PART LEFT  ***************** */
+.login-part-left {
+    background: var(--primary);
+    width: 50%;
+    text-align: center;
+    padding: 2rem 5rem 10rem;
+}
+
+.login-left-title {
+    color: var(--sixth);
+    font-size: 15px;
+}
+
+.login-left-btn {
+    background: var(--third);color: var(--sixth)
+}
+
+/* ***************** PART RIGHT  ***************** */
+.login-part-right {
+    width: 50%;
+}
+
+.login-img-right {
+    width: 100%;
+    height: 100%;
+}
