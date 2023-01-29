@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [SessionController::class, 'index']);
+Route::get('/login', [SessionController::class, 'index'])->name('login');
+Route::post('/login', [SessionController::class, 'authentication'])->name('validate.user');
+Route::post('/logout', [SessionController::class, 'logout'])->name('logout');
+Route::get('/preloader', [SessionController::class, 'preloader'])->name('preloader');
 
-
-
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
