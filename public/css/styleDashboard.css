@@ -1,5 +1,7 @@
 .container-dashboard {
-    padding: 30px;
+    width: 85%;
+    margin: auto;
+    padding: 20px;
 }
 
 /* MÓDULOS */
@@ -63,6 +65,11 @@
 /* RESPONSIVE */
 
 @media only screen and (max-width: 500px) {
+    .container-dashboard {
+        width: 100%;
+        padding: 30px;
+    }
+
     .dashboard-text-sup {
         font-size: 23px;
     }
