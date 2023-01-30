@@ -1,0 +1,10 @@
+.dashboard-icon-bg{
+    background-color: var(--third);
+    display: inline-block;
+    padding: 20px;
+}
+
+.dashboard-icon
+{
+    fill: var(--sixth) ;
+}

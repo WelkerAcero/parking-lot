@@ -1,13 +1,31 @@
-.offcanvas{
+.offcanvas {
     background-color: var(--primary);
 }
 
-.fixed-top{
+.fixed-top {
     position: relative;
 }
 
-.logout{
+.menu-text {
+    font-size: 25px;
+    color: var(--sixth);
+}
+
+.menu-text:hover {
+    color: var(--fourth);
+}
+
+.menu-icons {
+    fill: var(--sixth);
+    padding-right: 10px;
+}
+
+.logout {
     background-color: var(--primary);
     border: 0;
-    color: white;
+}
+
+.menu-logo {
+    padding: 10px;
+    text-align: center;
 }

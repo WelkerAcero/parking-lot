@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/styleMain.css">
     <link rel="stylesheet" type="text/css" href="css/styleLogin.css">
     <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+    <link rel="stylesheet" type="text/css" href="css/styleDashboard.css">
 </head>
 
 <body>
