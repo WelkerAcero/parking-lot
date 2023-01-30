@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/styleMain.css">
     <link rel="stylesheet" type="text/css" href="css/styleLogin.css">
+    <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+    <link rel="stylesheet" type="text/css" href="css/styleDashboard.css">
 </head>
 
 <body>
