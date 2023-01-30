@@ -1,29 +1,56 @@
+/* ***************** CONTAINER LOGIN  ***************** */
 .container-main-login {
     display: flex;
     width: 60%;
     margin: auto;
-    padding: 50px 0px;
-    flex-wrap: wrap;
+    padding: 34px 0px;
 }
 
-/* ***************** PART LEFT  ***************** */
+.container-login {
+    border-radius: 10px;
+    display: flex;
+    overflow: auto;
+    background: #e0e0e0;
+    box-shadow: 7px 7px 11px #828282,
+        -7px -7px 11px #ffffff;
+}
+
+/* ***************** LOGIN - PART LEFT  ***************** */
 .login-part-left {
     background: var(--primary);
     width: 50%;
     text-align: center;
-    padding: 2rem 5rem 10rem;
+    padding: 2rem 5rem 8rem;
+}
+
+.login-contain-form {
+    text-align: left;
 }
 
 .login-left-title {
     color: var(--sixth);
-    font-size: 15px;
+    font-size: 18px;
+    padding: 30px 0px 5px;
+}
+
+.login-form-text {
+    color: white;
+    font-size: 18px;
+    text-align: left;
 }
 
 .login-left-btn {
-    background: var(--third);color: var(--sixth)
+    background: var(--third);
+    color: var(--sixth)
 }
 
-/* ***************** PART RIGHT  ***************** */
+.login-error {
+    color: red;
+    position: absolute;
+    margin: auto;
+}
+
+/* ***************** LOGIN - PART RIGHT  ***************** */
 .login-part-right {
     width: 50%;
 }
@@ -31,4 +58,35 @@
 .login-img-right {
     width: 100%;
     height: 100%;
+}
+
+/* ***************** LOGIN - RESPONSIVE  ***************** */
+@media only screen and (max-width: 1300px) {
+    .container-login {
+        margin: auto;
+        overflow: hidden;
+    }
+
+    .login-part-left {
+        width: 100%;
+    }
+
+    .login-part-right {
+        visibility: hidden;
+        width: 0;
+    }
+
+    .login-error {
+        font-size: 11px;
+    }
+}
+
+@media only screen and (max-width: 755px) {
+    .container-main-login {
+        width: 90%;
+    }
+
+    .login-part-left {
+        padding: 2rem 3rem 8rem;
+    }
 }
