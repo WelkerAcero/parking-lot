@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\TypeEngine;
+use App\Models\Charge;
 use Illuminate\Database\Seeder;
 
-class TypeEngineSeeder extends Seeder
+class ChargeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class TypeEngineSeeder extends Seeder
      */
     public function run()
     {
-        TypeEngine::factory()->count(3)->create();
+        Charge::factory()->count(3)->create();
     }
 }
