@@ -1,0 +1,13 @@
+.offcanvas{
+    background-color: var(--primary);
+}
+
+.fixed-top{
+    position: relative;
+}
+
+.logout{
+    background-color: var(--primary);
+    border: 0;
+    color: white;
+}

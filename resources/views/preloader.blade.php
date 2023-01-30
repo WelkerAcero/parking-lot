@@ -12,7 +12,7 @@
 <body>
     <div class="contenedor--preloader">
         <div class="preloader" id="loader">
-            <p>Loading</p>
+            <p>Cerrando</p>
         </div>
     </div>
 
