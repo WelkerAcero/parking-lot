@@ -1,7 +1,5 @@
 @extends('layouts.template')
 
-@section('title', 'Menu')
-
 @section('header')
     <header>
         <nav class="navbar bg-light fixed-top">

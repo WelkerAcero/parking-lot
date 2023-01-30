@@ -3,6 +3,13 @@
 @section('title', 'customer')
 
 @section('content')
+
+    <div class="container">
+        <hr>
+        <p>Sección de botones</p>
+        <a href="{{ route('customer.create') }}">Create new customer</a>
+        <hr>
+    </div>
     <div class="container">
         <table class="table table-dark table-hover">
             <thead>
