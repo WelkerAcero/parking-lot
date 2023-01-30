@@ -8,12 +8,12 @@
     <hr>
     <div class="container">
         <div>
-            <h3>Perfil del usuario</h3>
+            <h3><strong>Perfil del usuario</strong></h3>
             <div>
-                <p>{{ $customer_profile->ci }}</p><br>
-                <p>{{ $customer_profile->name }}</p><br>
-                <p>{{ $customer_profile->lastname }}</p><br>
-                <p>{{ $customer_profile->charge->name }}</p><br>
+                <p>Cédula: {{ $customer_profile->ci }}</p><br>
+                <p>Nombre: {{ $customer_profile->name }}</p><br>
+                <p>Apellido: {{ $customer_profile->lastname }}</p><br>
+                <p>Cargo: {{ $customer_profile->charge->name }}</p><br>
             </div>
         </div>
         <div class="w-50">

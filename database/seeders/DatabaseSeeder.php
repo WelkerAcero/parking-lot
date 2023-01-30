@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             TypeEngineSeeder::class,
             ChargeSeeder::class,
             UserSeeder::class,
-            CustomerSeeder::class
+            CustomerSeeder::class,
+            VehicleSeeder::class
         ]);
     }
 }

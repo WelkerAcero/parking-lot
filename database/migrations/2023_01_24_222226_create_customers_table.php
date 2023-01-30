@@ -23,8 +23,8 @@ class CreateCustomersTable extends Migration
             $table->string('ci', 10);
             $table->string('name', 20);
             $table->string('lastname', 20)->nullable();
-            $table->string('email', 30)->unique();
-            $table->string('qr_image_url')->unique();
+            $table->string('email', 30)->nullable()->unique();
+            $table->string('url')->nullable()->unique();
             $table->foreignId('charge_id')
                 ->nullable()
                 ->constrained('charges')

@@ -9,9 +9,14 @@ class Customer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['doctype_id', 'ci', 'name', 'lastname', 'qr_image_url', 'charge_id', 'created_by'];
+    protected $fillable = ['doctype_id', 'ci', 'name', 'lastname', 'email', 'url', 'charge_id', 'created_by'];
 
-    public function doc_type()
+    public function setUrlAtrribute($value = 'MAMALO')
+    {
+        $this->attributes['url'] = $value;
+    }
+
+    public function doctype()
     {
         return $this->belongsTo(DocType::class);
     }

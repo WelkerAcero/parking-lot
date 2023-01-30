@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerRequest extends FormRequest
 {
@@ -13,7 +15,11 @@ class CustomerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        if (Auth::user()) {
+            return true;
+        } else {
+            return redirect($this->redirect, 403);
+        }
     }
 
     /**
@@ -24,7 +30,13 @@ class CustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'doctype_id' => 'required',
+            'ci' => 'required|max:10',
+            'name' => 'required|max:20',
+            'lastname' => 'nullable|max:20',
+            'email' => 'required|unique:customers',
+            'qr_image_url' => 'nullable',
+            'charge_id' => 'required',
         ];
     }
 }

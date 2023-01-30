@@ -15,4 +15,9 @@ class DocType extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function customer()
+    {
+        return $this->hasMany(Customer::class);
+    }
 }

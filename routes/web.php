@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthorizationController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,9 @@ Route::get('/preloader', [SessionController::class, 'preloader'])->name('preload
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-
 Route::get('/authorization/{customer_id}', [AuthorizationController::class, 'index'])->name('authorization.index');
 Route::post('/authorization/store', [AuthorizationController::class, 'store'])->name('authorization.store');
+
+Route::get('/customers', [CustomerController::class, 'index'])->name('customer.index');
+Route::get('/customers/create', [CustomerController::class, 'create'])->name('customer.create');
+Route::post('/customer/store', [CustomerController::class, 'store'])->name('customer.store');
