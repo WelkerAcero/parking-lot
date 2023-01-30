@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\TypeEngine;
+use App\Models\Customer;
 use Illuminate\Database\Seeder;
 
-class TypeEngineSeeder extends Seeder
+class CustomerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class TypeEngineSeeder extends Seeder
      */
     public function run()
     {
-        TypeEngine::factory()->count(3)->create();
+        Customer::factory()->count(3)->create();
     }
 }

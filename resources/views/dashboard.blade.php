@@ -5,6 +5,8 @@
 @section('content')
     <header>
 
+        <a href="{{ route('authorization.index', 4617583303) }}">Authorization</a>
+
         <form action="{{ route('logout') }}" method="post">
             @csrf
             <button type="submit" class="navbar-brand logout">

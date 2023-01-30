@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DocType extends Model
+class TypeEngine extends Model
 {
     use HasFactory;
 
     protected $fillable = ['name'];
 
-    public function user()
+    public function vehicle()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Vehicle::class);
     }
 }
