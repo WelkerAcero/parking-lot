@@ -49,4 +49,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(DocType::class);
     }
+
+    public function customer()
+    {
+        return $this->hasMany(Customer::class, 'created_by');
+    }
+
+    public function authorization()
+    {
+        return $this->hasMany(Authorization::class);
+    }
 }

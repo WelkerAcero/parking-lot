@@ -24,7 +24,7 @@
                     <h2>Simple QR Code</h2>
                 </div>
                 <div class="card-body">
-                    {!! QrCode::size(300)->generate($customer->url . $customer->ci) !!}
+                    {!! QrCode::size(300)->generate($customer->url) !!}
                 </div>
             </div>
         </div>

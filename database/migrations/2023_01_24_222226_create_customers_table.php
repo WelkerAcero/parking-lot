@@ -31,10 +31,9 @@ class CreateCustomersTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('set null');
             $table->foreignId('created_by')
-                ->nullable()
                 ->constrained('users')
                 ->onUpdate('cascade')
-                ->onDelete('set null');
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

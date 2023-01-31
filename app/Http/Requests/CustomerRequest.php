@@ -22,6 +22,14 @@ class CustomerRequest extends FormRequest
         }
     }
 
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'url' => 'http://127.0.0.1:8000/authorization/' . $this->ci,
+            'created_by' => Auth::user()->id
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -35,8 +43,9 @@ class CustomerRequest extends FormRequest
             'name' => 'required|max:20',
             'lastname' => 'nullable|max:20',
             'email' => 'required|unique:customers',
-            'urll' => 'nullable',
+            'url' => 'nullable|unique:customers',
             'charge_id' => 'required',
+            'created_by' => 'required',
         ];
     }
 }
