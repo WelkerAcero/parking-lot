@@ -18,8 +18,10 @@
                 <th>Name</th>
                 <th>Lastname</th>
                 <th>Email</th>
-                <th>QR_IMAGE_URL</th>
                 <th>Charge</th>
+                <th>Detalles</th>
+                <th>Update</th>
+                <th>Delete</th>
             </thead>
             <tbody>
 
@@ -30,8 +32,30 @@
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->lastname }}</td>
                         <td>{{ $item->email }}</td>
-                        <td>{{ $item->url }}</td>
                         <td>{{ $item->charge->name }}</td>
+                        <td> <a href="{{ route('customer.show', $item->id) }}">
+                                <abbr title="Mostrar completa del perfil información" style="cursor: pointer">
+                                    <img src="{{ asset('img/icons/detail.svg') }}" width="40px">
+                                </abbr>
+                            </a></td>
+                        <td>
+                            <a href="{{ route('customer.edit', $item->id) }}">
+                                <abbr title="Editar información" style="cursor: pointer">
+                                    <img src="{{ asset('img/icons/edit.svg') }}" width="40px">
+                                </abbr>
+                            </a>
+                        </td>
+                        <td>
+                            <form action="{{ route('customer.destroy', $item->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <a href="{{ route('customer.edit', $item->id) }}">
+                                    <abbr title="Editar información" style="cursor: pointer">
+                                        <img src="{{ asset('img/icons/delete.svg') }}" width="40px">
+                                    </abbr>
+                                </a>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

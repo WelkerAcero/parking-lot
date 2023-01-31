@@ -35,7 +35,7 @@ class CustomerRequest extends FormRequest
             'name' => 'required|max:20',
             'lastname' => 'nullable|max:20',
             'email' => 'required|unique:customers',
-            'qr_image_url' => 'nullable',
+            'urll' => 'nullable',
             'charge_id' => 'required',
         ];
     }

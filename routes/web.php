@@ -31,3 +31,7 @@ Route::post('/authorization/store', [AuthorizationController::class, 'store'])->
 Route::get('/customers', [CustomerController::class, 'index'])->name('customer.index');
 Route::get('/customers/create', [CustomerController::class, 'create'])->name('customer.create');
 Route::post('/customer/store', [CustomerController::class, 'store'])->name('customer.store');
+Route::delete('/customer/{customer}/delete', [CustomerController::class, 'destroy'])->name('customer.destroy');
+Route::get('/customer/{customer}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
+Route::get('/customer/{customer}/update', [CustomerController::class, 'update'])->name('customer.update');
+Route::get('/customer/{id}/detalles', [CustomerController::class, 'show'])->name('customer.show');

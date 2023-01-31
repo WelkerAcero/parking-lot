@@ -20,11 +20,11 @@ class CreateCustomersTable extends Migration
                 ->constrained('doc_types')
                 ->onUpdate('cascade')
                 ->onDelete('set null');
-            $table->string('ci', 10);
+            $table->string('ci', 10)->unique();
             $table->string('name', 20);
             $table->string('lastname', 20)->nullable();
             $table->string('email', 30)->nullable()->unique();
-            $table->string('url')->nullable()->unique();
+            $table->string('url')->unique();
             $table->foreignId('charge_id')
                 ->nullable()
                 ->constrained('charges')
