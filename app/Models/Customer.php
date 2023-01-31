@@ -4,15 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Customer extends Model
 {
     use HasFactory;
 
     protected $fillable = ['doctype_id', 'ci', 'name', 'lastname', 'email', 'url', 'charge_id', 'created_by'];
+    /* 
     protected $attributes = [
-        'url' => 'http://127.0.0.1:8000/authorization/'
-    ];
+        'url' => 'http://127.0.0.1:8000/authorization/',
+    ]; */
 
     public function doctype()
     {

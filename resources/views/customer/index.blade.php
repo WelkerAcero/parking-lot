@@ -37,7 +37,8 @@
                                 <abbr title="Mostrar completa del perfil información" style="cursor: pointer">
                                     <img src="{{ asset('img/icons/detail.svg') }}" width="40px">
                                 </abbr>
-                            </a></td>
+                            </a>
+                        </td>
                         <td>
                             <a href="{{ route('customer.edit', $item->id) }}">
                                 <abbr title="Editar información" style="cursor: pointer">
