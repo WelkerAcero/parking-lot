@@ -9,3 +9,6 @@
 
 ## About this project: Parking lot
 
+# Packeges needed: 
+    composer require simplesoftwareio/simple-qrcode
+
