@@ -13,3 +13,11 @@
     box-sizing: border-box;
     /* border: 1px solid red; */
 }
+
+.background-all{
+    background-image: url('../img/ondas.svg');
+    background-repeat: no-repeat;
+    position: relative;
+    background-position: bottom;
+    background-attachment: fixed;
+}

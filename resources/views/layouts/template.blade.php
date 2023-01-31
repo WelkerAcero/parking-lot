@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/styleDashboard.css') }}">
 </head>
 
-<body>
+<body class="background-all">
     @yield('header')
 
     @yield('content')

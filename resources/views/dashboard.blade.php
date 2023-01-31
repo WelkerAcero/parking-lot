@@ -33,9 +33,9 @@
                         </div>
                         <h2 class="module-top-text"><b>Gestionar usuarios</b></h2>
                     </div>
-                    <div class="module-bottom-text" style="">
+                    <div class="module-bottom-text">
                         <h4 style="margin-right: 23px">Ir a módulo de usuarios</h4>
-                        <img src="{{ asset('img/icons/enter.svg') }}" width="30px">
+                        <img class="dash-icon-acceder" src="{{ asset('img/icons/enter.svg') }}" width="18px">
                     </div>
                 </a>
             </div>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="module-bottom-text" style="">
                         <h4 style="margin-right: 23px">Ir a módulo de vehículos</h4>
-                        <img src="{{ asset('img/icons/enter.svg') }}" width="30px">
+                        <img class="dash-icon-acceder" src="{{ asset('img/icons/enter.svg') }}" width="18px">
                     </div>
                 </a>
             </div>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="module-bottom-text">
                         <h4 style="margin-right: 23px">Ir a módulo de estacionamiento</h4>
-                        <img src="{{ asset('img/icons/enter.svg') }}" width="30px">
+                        <img class="dash-icon-acceder" src="{{ asset('img/icons/enter.svg') }}" width="18px">
                     </div>
                 </a>
             </div>
