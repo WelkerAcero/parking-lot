@@ -49,11 +49,11 @@
                             <form action="{{ route('customer.destroy', $item->id) }}" method="post">
                                 @csrf
                                 @method('delete')
-                                <a href="{{ route('customer.edit', $item->id) }}">
-                                    <abbr title="Editar información" style="cursor: pointer">
+                                <button type="submit">
+                                    <abbr title="Eliminar información" style="cursor: pointer">
                                         <img src="{{ asset('img/icons/delete.svg') }}" width="40px">
                                     </abbr>
-                                </a>
+                                </button>
                             </form>
                         </td>
                     </tr>
