@@ -34,7 +34,7 @@
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->charge->name }}</td>
                         <td> <a href="{{ route('customer.show', $item->id) }}">
-                                {{-- <abbr title="Mostrar completa del perfil información" style="cursor: pointer">
+                                <abbr title="Mostrar completa del perfil información" style="cursor: pointer">
                                     <img src="{{ asset('img/icons/detail.svg') }}" width="40px">
                                 </abbr>
                             </a>
