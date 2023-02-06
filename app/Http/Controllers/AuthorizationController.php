@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Authorization;
 use App\Models\Customer;
+use App\Models\User;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,11 +21,11 @@ class AuthorizationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($customer_id)
+    public function index()
     {
-        $customer_profile = Customer::with('charge')->where('ci', $customer_id)->get();
-        $customer_profile = $customer_profile[0];
-        return view('authorization.index', compact('customer_profile'));
+        $authorizations = Authorization::with('user')->get();
+        return compact('authorizations');
+        /* return view('authorization.index', compact('authorizations')); */
     }
 
     /**
@@ -32,11 +33,13 @@ class AuthorizationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
+    public function create($customer_id)
+    {
+        $customer_profile = Customer::with('charge')->where('ci', $customer_id)->get();
+        $customer_profile = $customer_profile[0];
+        return view('authorization.create', compact('customer_profile'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -46,14 +49,16 @@ class AuthorizationController extends Controller
     public function store(Request $request)
     {
         $customer = Customer::select('id')->where('ci', $request->customer_id)->get();
-        $vehicle = Vehicle::find($customer[0]->id);
+        $vehicle = Vehicle::select('id')->where('customer_id', $customer[0]->id)->get();
+        $user = User::find(Auth::user()->id);
 
-        $authorization = new Authorization([
-            'vehicle_id' => $vehicle->id,
-            'authorized_by' => Auth::user()->id,
+        $data = new Authorization([
+            'vehicle_id' => $vehicle[0]->id,
             'authorization_type' => $request->authorization_type
         ]);
-        $vehicle->authorization()->save($authorization);
+
+        $user->authorization()->save($data);
+        return redirect()->route('admin.dashboard');
     }
 
     /**

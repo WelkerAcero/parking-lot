@@ -13,11 +13,11 @@ class Authorization extends Model
 
     public function vehicle()
     {
-        return $this->belongsTo(Vehicle::class);
+        return $this->belongsToMany(Vehicle::class, 'authorizations', 'id');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class); // authorized_by
+        return $this->belongsToMany(User::class, 'authorizations', 'id'); // authorized_by
     }
 }
