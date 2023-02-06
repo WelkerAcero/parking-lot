@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                     aria-controls="offcanvasNavbar" style="color: var(--fourth)">
-                    Menú <span style=" color: white;">
+                    <b>MENÚ</b> <span style=" color: white;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-border-width" viewBox="0 0 16 16">
                             <path
