@@ -2,16 +2,24 @@
 
 @section('header')
     <header>
-        <nav class="navbar bg-light fixed-top">
+        <nav class="navbar bg-dark fixed-top">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                     aria-controls="offcanvasNavbar" style="color: var(--fourth)">
-                    Menú <span class="navbar-toggler-icon"></span>
+                    Menú <span style=" color: white;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-border-width" viewBox="0 0 16 16">
+                            <path
+                                d="M0 3.5A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-2zm0 5A.5.5 0 0 1 .5 8h15a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1zm0 4a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </span>
                 </button>
 
                 <div class="button_session me-4">
                     <div>
-                        <a href="{{ route('admin.dashboard') }}" class="navbar-brand">ADMINISTRADOR</a>
+                        <a href="{{ route('admin.dashboard') }}" class="navbar-brand"
+                            style="color: var(--sixth)"><strong>Administrador</strong>
+                            {{ session('authenticated') }}</a>
                     </div>
                 </div>
 
@@ -33,7 +41,7 @@
                             <ul class="navbar-nav justify-content-end flex-grow-1 p-4 menu-dimension">
                                 <li class="nav-item dropdown">
                                     <a href="{{ route('admin.dashboard') }}" class="nav-link menu-text" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        aria-expanded="false">
 
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="30px">
                                             <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -46,7 +54,7 @@
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link menu-text" href="{{ route('customer.index') }}" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        aria-expanded="false">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="30px">
                                             <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                                             <path class="menu-icons"
@@ -57,7 +65,7 @@
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link menu-text"href="{{ route('vehicle.index') }}" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        aria-expanded="false">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30px">
                                             <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                                             <path class="menu-icons"
@@ -68,8 +76,7 @@
 
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link menu-text" href="#" role="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
+                                    <a class="nav-link menu-text" href="#" role="button" aria-expanded="false">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="30px">
                                             <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                                             <path class="menu-icons"

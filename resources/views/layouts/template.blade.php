@@ -11,6 +11,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/styleLogin.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/styleMenu.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/styleDashboard.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/styleCustomer.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/styleButtons.css') }}">
+
+    {{-- Jquery library --}}
+    <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
+    {{-- Here all Js files --}}
+    <script src="{{ asset('js/buttons.js') }}"></script>
 </head>
 
 <body class="background-all">

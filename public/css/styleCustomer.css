@@ -1,0 +1,15 @@
+.user-buttons {
+    display: flex;
+    border-bottom: 1px solid black;
+    margin: 30px 0px;
+}
+
+.container {
+    box-sizing: border-box;
+    margin: 30px auto;
+}
+
+.customer-icon-del {
+    background-color: transparent;
+    border: none;
+}

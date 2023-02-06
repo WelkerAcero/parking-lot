@@ -1,18 +1,23 @@
-@extends('layouts.template')
+@extends('layouts.main')
 
 @section('title', 'authorization-page')
 
 @section('content')
-    <h1>THIS IS THE PROFILE "DETALLES"</h1>
-    <hr>
     <div class="container">
+        <div class="user-buttons">
+            <h2 style="margin-right: 20px">Módulo usuario</h2>
+            <img src="{{ asset('img/icons/user-regular.svg') }}" width="30px">
+        </div>
+
+        {{-- <a href="{{ route('customer.create') }}">Create new customer</a> --}}
+
         <a href="{{ route('customer.index') }}" style="background-color:black">
             <abbr title="Ir atras" style="cursor: pointer">
                 <img src="{{ asset('img/icons/close.svg') }}" width="40px">
             </abbr>
         </a>
-        <div class="customer-profile">
-            <h3><strong>Perfil del usuario</strong></h3>
+        <div class="container customer-profile">
+            <h3><strong>Detalles del usuario</strong></h3>
             <div class="card">
                 <div class="container">
                     <p>Cédula: {{ $customer->ci }}</p><br>
