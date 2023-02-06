@@ -41,7 +41,7 @@
             </div>
             {{-- MÓDULO VEHICLES --}}
             <div class="dashboard-module">
-                <a href="#" class="dashboard-module-href">
+                <a href="{{ route('vehicle.index') }}" class="dashboard-module-href">
                     <div class="module-top">
                         <div class="dashboard-icon-bg">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="35px">
