@@ -1,46 +1,63 @@
-@extends('layouts.template')
+@extends('layouts.main');
 
-@section('title', 'authorization-page')
+@section('title', 'customer')
 
 @section('content')
 
-    <h1>Authorization page</h1>
-    <hr>
     <div class="container">
-        <div class="customer-profile">
-            <h3><strong>Perfil del usuario</strong></h3>
+        <hr>
+        <p>Sección de botones</p>
+        <a href="{{ route('customer.create') }}">Create new customer</a>
+        <hr>
+    </div>
+    <div class="container">
+        <table class="table table-dark table-hover">
+            <thead>
+                <th>Placa del auto</th>
+                <th>Cédula del dueño</th>
+                <th>Nombre del dueño</th>
+                <th>Autorizado por</th>
+                <th>Tipo de Autorización</th>
+                <th>Detalles</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
 
-            <div class="card">
-                <div>
-                    <p>Cédula: {{ $customer_profile->ci }}</p><br>
-                    <p>Nombre: {{ $customer_profile->name }}</p><br>
-                    <p>Apellido: {{ $customer_profile->lastname }}</p><br>
-                    <p>Cargo: {{ $customer_profile->charge->name }}</p><br>
-                </div>
-                <div class="card-header">
-                    <h2>Simple QR Code</h2>
-                </div>
-                <div class="card-body">
-                    {!! QrCode::size(300)->generate($customer_profile->url) !!}
-                </div>
-            </div>
-        </div>
-        <div class="w-50">
-            <form action="{{ route('authorization.store') }}" method="post">
-                @csrf
-                <input type="text" value="{{ $customer_profile->ci }}" class="form-control" name="customer_id" hidden>
-                <input type="text" value="Entrance" hidden name="authorization_type">
-                <button type="submit" class="btn btn-primary w-50">PERMITIR ENTRADA</button>
-            </form>
-        </div>
-        <br>
-        <div class="w-50">
-            <form action="{{ route('authorization.store') }}" method="post">
-                @csrf
-                <input type="text" value="{{ $customer_profile->ci }}" class="form-control" name="customer_id" hidden>
-                <input type="text" value="Exit" name="authorization_type" hidden>
-                <button type="submit" class="btn btn-danger w-50">PERMITIR SALIDA</button>
-            </form>
-        </div>
+                @foreach ($authorizations as $item)
+                    <tr>
+                        <td>{{ $item->vehicle->l_plate }}</td>
+                        <td>{{ $item->vehicle->customer->ci }}</td>
+                        <td>{{ $item->vehicle->customer->name }}</td>
+                        <td>{{ $item->user->name }}</td>
+                        <td>{{ $item->authorization_type }}</td>
+                        <td> <a {{-- href="{{ route('customer.show', $item->id) }}" --}}>
+                                <abbr title="Mostrar completa del perfil información" style="cursor: pointer">
+                                    <img src="{{ asset('img/icons/detail.svg') }}" width="40px">
+                                </abbr>
+                            </a>
+                        </td>
+                        <td>
+                            <a {{-- href="{{ route('customer.edit', $item->id) }}" --}}>
+                                <abbr title="Editar información" style="cursor: pointer">
+                                    <img src="{{ asset('img/icons/edit.svg') }}" width="40px">
+                                </abbr>
+                            </a>
+                        </td>
+                        <td>
+                            <form {{-- action="{{ route('customer.destroy', $item->id) }}" method="post" --}}>
+                                @csrf
+                                @method('delete')
+                                <button type="submit">
+                                    <abbr title="Eliminar información" style="cursor: pointer">
+                                        <img src="{{ asset('img/icons/delete.svg') }}" width="40px">
+                                    </abbr>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 @endsection

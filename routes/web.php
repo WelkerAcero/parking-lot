@@ -31,7 +31,8 @@ Route::controller(DashboardController::class)->group(function () {
 });
 
 Route::controller(AuthorizationController::class)->group(function () {
-    Route::get('/authorization/{customer_id}', 'index')->name('authorization.index');
+    Route::get('/authorizations', 'index')->name('vehicle.index');
+    Route::get('/authorization/{customer_id}', 'create')->name('authorization.create');
     Route::post('/authorization/store', 'store')->name('authorization.store');
 });
 

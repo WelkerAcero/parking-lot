@@ -21,11 +21,11 @@ class AuthorizationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($customer_id)
+    public function index()
     {
-        $customer_profile = Customer::with('charge')->where('ci', $customer_id)->get();
-        $customer_profile = $customer_profile[0];
-        return view('authorization.index', compact('customer_profile'));
+        $authorizations = Authorization::with('user')->get();
+        return compact('authorizations');
+        /* return view('authorization.index', compact('authorizations')); */
     }
 
     /**
@@ -33,11 +33,13 @@ class AuthorizationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
+    public function create($customer_id)
+    {
+        $customer_profile = Customer::with('charge')->where('ci', $customer_id)->get();
+        $customer_profile = $customer_profile[0];
+        return view('authorization.create', compact('customer_profile'));
+    }
     /**
      * Store a newly created resource in storage.
      *
