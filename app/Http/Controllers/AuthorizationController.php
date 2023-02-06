@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Authorization;
 use App\Models\Customer;
+use App\Models\User;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,14 +47,16 @@ class AuthorizationController extends Controller
     public function store(Request $request)
     {
         $customer = Customer::select('id')->where('ci', $request->customer_id)->get();
-        $vehicle = Vehicle::find($customer[0]->id);
+        $vehicle = Vehicle::select('id')->where('customer_id', $customer[0]->id)->get();
+        $user = User::find(Auth::user()->id);
 
-        $authorization = new Authorization([
-            'vehicle_id' => $vehicle->id,
-            'authorized_by' => Auth::user()->id,
+        $data = new Authorization([
+            'vehicle_id' => $vehicle[0]->id,
             'authorization_type' => $request->authorization_type
         ]);
-        $vehicle->authorization()->save($authorization);
+
+        $user->authorization()->save($data);
+        return redirect()->route('admin.dashboard');
     }
 
     /**

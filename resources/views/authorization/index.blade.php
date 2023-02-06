@@ -26,24 +26,20 @@
             </div>
         </div>
         <div class="w-50">
-            <p>Entrada</p>
             <form action="{{ route('authorization.store') }}" method="post">
                 @csrf
-                <label for="customer_id">Cédula del usuario</label>
                 <input type="text" value="{{ $customer_profile->ci }}" class="form-control" name="customer_id" hidden>
                 <input type="text" value="Entrance" hidden name="authorization_type">
-                <button type="submit">ENTRADA</button>
+                <button type="submit" class="btn btn-primary w-50">PERMITIR ENTRADA</button>
             </form>
         </div>
         <br>
         <div class="w-50">
-            <p>Salida</p>
             <form action="{{ route('authorization.store') }}" method="post">
                 @csrf
-                <label for="customer_id">Cédula del usuario</label>
                 <input type="text" value="{{ $customer_profile->ci }}" class="form-control" name="customer_id" hidden>
-                <input type="text" value="Exit" hidden name="authorization_type">
-                <button type="submit">SALIDA</button>
+                <input type="text" value="Exit" name="authorization_type" hidden>
+                <button type="submit" class="btn btn-danger w-50">PERMITIR SALIDA</button>
             </form>
         </div>
     </div>
