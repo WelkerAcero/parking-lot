@@ -1,0 +1,35 @@
+.user-buttons {
+    display: flex;
+    border-bottom: 1px solid black;
+    margin: 30px 0px;
+}
+
+.container {
+    box-sizing: border-box;
+    margin: 30px auto;
+}
+
+.customer-icon-del {
+    background-color: transparent;
+    border: none;
+}
+
+.user-container-form {
+    margin: auto;
+    text-align: center;
+    background-color: var(--fifth);
+    width: 48vmax;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.form-control {
+    text-align: center;
+    width: 40vmax;
+    padding: 10px;
+}
+
+.user-title-dark {
+    text-align: left;
+    font-weight: bold;
+}

@@ -1,10 +1,12 @@
-@extends('layouts.main');
+@extends('layouts.main')
 
-@section('title', 'customer')
+@section('title', 'Vehicles')
 
 @section('content')
 
     <div class="container">
+        
+
         <hr>
         <p>Sección de botones</p>
         <a href="{{ route('customer.create') }}">Create new vehicle</a>

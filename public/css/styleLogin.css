@@ -10,9 +10,7 @@
     border-radius: 10px;
     display: flex;
     overflow: auto;
-    background: #e0e0e0;
-    box-shadow: 7px 7px 11px #828282,
-        -7px -7px 11px #ffffff;
+    box-shadow: 7px 7px 11px #000000;
 }
 
 /* ***************** LOGIN - PART LEFT  ***************** */

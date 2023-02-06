@@ -1,0 +1,20 @@
+.button-list-off, .button-add-off {
+    background-color: var(--third);
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.button-list-off:hover, .button-add-off:hover{
+    color: black;
+}
+
+.provider-boton-active {
+    border: 4px solid #000000;
+    box-shadow: inset 0px 39px 0px -24px #a1bbf0;
+    background-color: var(--third);
+    color:white
+}
+

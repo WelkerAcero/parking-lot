@@ -1,11 +1,23 @@
-@extends('layouts.main');
+@extends('layouts.main')
 
 @section('title', 'customer')
 
 @section('content')
 
-    <div class="container mt-2">
-        <form action="{{ route('customer.update', $customer) }}" method="post">
+    <div class="container">
+        <div class="user-buttons">
+            <h2 style="margin-right: 20px">Módulo usuario</h2>
+            <img src="{{ asset('img/icons/user-regular.svg') }}" width="30px">
+        </div>
+
+        <x-button>
+            <x-slot name="type">customer</x-slot>
+            <x-slot name="add">Agregar Cliente</x-slot>
+            <x-slot name="list">Listar Clientes</x-slot>
+        </x-button>
+        {{-- <a href="{{ route('customer.create') }}">Create new customer</a> --}}
+
+        <form action="{{ route('customer.update', $customer) }}" method="post" class="container">
             @csrf
             @method('put')
 
@@ -60,4 +72,5 @@
             <button type="submit" class="btn btn-success">Guardar</button>
         </form>
     </div>
+
 @endsection
