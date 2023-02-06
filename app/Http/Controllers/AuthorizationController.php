@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthorizationRequest;
 use App\Models\Authorization;
 use App\Models\Customer;
 use App\Models\User;
@@ -23,7 +24,7 @@ class AuthorizationController extends Controller
      */
     public function index()
     {
-        $authorizations = Authorization::with('user')->get();
+        $authorizations = User::with('authorization')->get();
         return compact('authorizations');
         /* return view('authorization.index', compact('authorizations')); */
     }
@@ -46,18 +47,9 @@ class AuthorizationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AuthorizationRequest $request)
     {
-        $customer = Customer::select('id')->where('ci', $request->customer_id)->get();
-        $vehicle = Vehicle::select('id')->where('customer_id', $customer[0]->id)->get();
-        $user = User::find(Auth::user()->id);
-
-        $data = new Authorization([
-            'vehicle_id' => $vehicle[0]->id,
-            'authorization_type' => $request->authorization_type
-        ]);
-
-        $user->authorization()->save($data);
+        Authorization::create($request->validated());
         return redirect()->route('admin.dashboard');
     }
 

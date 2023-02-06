@@ -23,6 +23,6 @@ class Vehicle extends Model
 
     public function authorization()
     {
-        return $this->hasMany(Authorization::class);
+        return $this->belongsToMany(User::class, 'authorizations', 'vehicle_id');
     }
 }

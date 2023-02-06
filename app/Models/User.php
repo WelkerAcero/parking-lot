@@ -57,6 +57,6 @@ class User extends Authenticatable
 
     public function authorization()
     {
-        return $this->hasMany(Authorization::class, 'authorized_by');
+        return $this->belongsToMany(Vehicle::class, 'authorizations', 'authorized_by');
     }
 }
