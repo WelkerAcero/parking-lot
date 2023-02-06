@@ -11,7 +11,7 @@
 
                 <div class="button_session me-4">
                     <div>
-                        <a class="navbar-brand" href="{{ route('admin.dashboard') }}">ADMINISTRADOR</a>
+                        <a href="{{ route('admin.dashboard') }}" class="navbar-brand">ADMINISTRADOR</a>
                     </div>
                 </div>
 
@@ -32,7 +32,7 @@
                         <div class="contenedor--menu">
                             <ul class="navbar-nav justify-content-end flex-grow-1 p-4 menu-dimension">
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link menu-text" href="{{ route('admin.dashboard') }}" role="button"
+                                    <a href="{{ route('admin.dashboard') }}" class="nav-link menu-text" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
 
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="30px">
@@ -43,21 +43,21 @@
                                         Dashboard
                                     </a>
                                 </li>
+
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link menu-text" href="#" role="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
+                                    <a class="nav-link menu-text" href="{{ route('customer.index') }}" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="30px">
                                             <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                                             <path class="menu-icons"
                                                 d="M272 304h-96C78.8 304 0 382.8 0 480c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32C448 382.8 369.2 304 272 304zM48.99 464C56.89 400.9 110.8 352 176 352h96c65.16 0 119.1 48.95 127 112H48.99zM224 256c70.69 0 128-57.31 128-128c0-70.69-57.31-128-128-128S96 57.31 96 128C96 198.7 153.3 256 224 256zM224 48c44.11 0 80 35.89 80 80c0 44.11-35.89 80-80 80S144 172.1 144 128C144 83.89 179.9 48 224 48z" />
                                         </svg>
-                                        Usuario
+                                        Personas
                                     </a>
-
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link menu-text" href="#" role="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
+                                    <a class="nav-link menu-text"href="{{ route('vehicle.index') }}" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30px">
                                             <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                                             <path class="menu-icons"

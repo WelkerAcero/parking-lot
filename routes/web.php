@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\VehicleController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,20 +19,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [SessionController::class, 'index'])->name('login');
-Route::post('/login', [SessionController::class, 'authentication'])->name('validate.user');
-Route::post('/logout', [SessionController::class, 'logout'])->name('logout');
-Route::get('/preloader', [SessionController::class, 'preloader'])->name('preloader');
+Route::controller(SessionController::class)->group(function () {
+    Route::get('/login', 'index')->name('login');
+    Route::post('/login', 'authentication')->name('validate.user');
+    Route::post('/logout', 'logout')->name('logout');
+    Route::get('/preloader', 'preloader')->name('preloader');
+});
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::controller(DashboardController::class)->group(function () {
+    Route::get('/dashboard', 'index')->name('admin.dashboard');
+});
 
-Route::get('/authorization/{customer_id}', [AuthorizationController::class, 'index'])->name('authorization.index');
-Route::post('/authorization/store', [AuthorizationController::class, 'store'])->name('authorization.store');
+Route::controller(AuthorizationController::class)->group(function () {
+    Route::get('/authorization/{customer_id}', 'index')->name('authorization.index');
+    Route::post('/authorization/store', 'store')->name('authorization.store');
+});
 
-Route::get('/customers', [CustomerController::class, 'index'])->name('customer.index');
-Route::get('/customers/create', [CustomerController::class, 'create'])->name('customer.create');
-Route::post('/customer/store', [CustomerController::class, 'store'])->name('customer.store');
-Route::delete('/customer/{customer}/delete', [CustomerController::class, 'destroy'])->name('customer.destroy');
-Route::get('/customer/{customer}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
-Route::get('/customer/{customer}/update', [CustomerController::class, 'update'])->name('customer.update');
-Route::get('/customer/{id}/detalles', [CustomerController::class, 'show'])->name('customer.show');
+Route::controller(CustomerController::class)->group(function () {
+
+    Route::get('/customers',  'index')->name('customer.index');
+    Route::get('/customers/create',  'create')->name('customer.create');
+    Route::post('/customer/store',  'store')->name('customer.store');
+    Route::delete('/customer/{customer}/delete',  'destroy')->name('customer.destroy');
+    Route::get('/customer/{customer}/edit',  'edit')->name('customer.edit');
+    Route::get('/customer/{customer}/update',  'update')->name('customer.update');
+    Route::get('/customer/{id}/detalles',  'show')->name('customer.show');
+});
+
+Route::controller(VehicleController::class)->group(function () {
+    Route::get('/vehicles', 'index')->name('vehicle.index');
+});

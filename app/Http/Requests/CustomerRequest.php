@@ -43,7 +43,7 @@ class CustomerRequest extends FormRequest
             'name' => 'required|max:20',
             'lastname' => 'nullable|max:20',
             'email' => 'required|unique:customers',
-            'url' => 'nullable|unique:customers',
+            'url' => 'required|unique:customers',
             'charge_id' => 'required',
             'created_by' => 'required',
         ];

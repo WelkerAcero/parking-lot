@@ -16,9 +16,9 @@ class Vehicle extends Model
         return $this->belongsTo(Customer::class);
     }
 
-    public function typeEngine()
+    public function engine()
     {
-        return $this->belongsTo(TypeEngine::class);
+        return $this->belongsTo(TypeEngine::class, 'engine_id');
     }
 
     public function authorization()
