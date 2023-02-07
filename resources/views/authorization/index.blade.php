@@ -1,4 +1,4 @@
-@extends('layouts.main');
+@extends('layouts.main')
 
 @section('title', 'customer')
 
@@ -10,6 +10,16 @@
         <hr>
     </div>
     <div class="container">
+        <form action="{{ route('authorization.filter') }}" method="post">
+            <div class="filter mb-3 w-50">
+                <div class="me-2">
+                    <label for="search">Cédula o placa del vehículo<br>
+                        <input type="text" name="ci" placeholder="Escriba cédula o placa del vehículo">
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-success">Buscar</button>
+            </div>
+        </form>
         <table class="table table-dark table-hover">
             <thead>
                 <th>Placa del auto</th>

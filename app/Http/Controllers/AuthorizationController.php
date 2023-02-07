@@ -6,6 +6,7 @@ use App\Http\Requests\AuthorizationRequest;
 use App\Models\Authorization;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AuthorizationController extends Controller
 {
@@ -19,7 +20,14 @@ class AuthorizationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function getFilteredData($param)
+    {
+        $data = Authorization::with('vehicle')->where('ci', $param)->get();
+        return compact('data');
+    }
+
+    public function index($filter = null)
     {
         $authorizations = Authorization::with('user', 'vehicle.customer')->paginate();
         return view('authorization.index', compact('authorizations'));

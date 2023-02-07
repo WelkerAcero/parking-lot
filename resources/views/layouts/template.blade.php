@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/styleDashboard.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/styleCustomer.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/styleButtons.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/authorizationStyle.css') }}">
 
     {{-- Jquery library --}}
     <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>

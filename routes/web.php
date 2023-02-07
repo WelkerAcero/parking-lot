@@ -34,6 +34,7 @@ Route::controller(AuthorizationController::class)->group(function () {
     Route::get('/authorizations', 'index')->name('authorization.index');
     Route::get('/authorization/{customer_id}', 'create')->name('authorization.create');
     Route::post('/authorization/store', 'store')->name('authorization.store');
+    Route::post('/authorization/filter', 'getFilteredData')->name('authorization.filter');
 });
 
 Route::controller(CustomerController::class)->group(function () {
