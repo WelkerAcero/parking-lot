@@ -9,7 +9,11 @@
     <div class="container">
         <div class="customer-profile">
             <h3><strong>Perfil del usuario</strong></h3>
-
+            @error('vehicle_id')
+                <div class="alert alert-danger" role="alert">
+                    {{ $message }}
+                </div>
+            @enderror
             <div class="card">
                 <div>
                     <p>Cédula: {{ $customer_profile->ci }}</p><br>

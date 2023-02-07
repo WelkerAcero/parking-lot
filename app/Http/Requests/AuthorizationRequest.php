@@ -28,12 +28,15 @@ class AuthorizationRequest extends FormRequest
     {
         $customer = Customer::select('id')->where('ci', $this->customer_id)->get();
         $vehicleId = Vehicle::select('id')->where('customer_id', $customer[0]->id)->get();
-        if ($this->authorization_type == 'Entrance' || $this->authorization_type == 'Exit') {
-            $this->merge([
-                'vehicle_id' => $vehicleId[0]->id,
-                'authorized_by' => Auth::user()->id,
-                'authorization_type' => $this->authorization_type,
-            ]);
+
+        if (isset($$vehicleId[0]->id)) {
+            if ($this->authorization_type == 'Entrance' || $this->authorization_type == 'Exit') {
+                $this->merge([
+                    'vehicle_id' => $vehicleId[0]->id,
+                    'authorized_by' => Auth::user()->id,
+                    'authorization_type' => $this->authorization_type,
+                ]);
+            }
         }
     }
 
@@ -48,6 +51,13 @@ class AuthorizationRequest extends FormRequest
             'vehicle_id' => 'required',
             'authorized_by' => 'required',
             'authorization_type' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'vehicle_id.required' => 'Este cliente no posee auto a su nombre - Cree un vehículo a su nombre antes de proceder',
         ];
     }
 }

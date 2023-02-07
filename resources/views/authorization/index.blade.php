@@ -11,10 +11,11 @@
     </div>
     <div class="container">
         <form action="{{ route('authorization.filter') }}" method="post">
+            @csrf
             <div class="filter mb-3 w-50">
                 <div class="me-2">
                     <label for="search">Cédula o placa del vehículo<br>
-                        <input type="text" name="ci" placeholder="Escriba cédula o placa del vehículo">
+                        <input type="text" name="filterData" placeholder="Escriba cédula o placa del vehículo">
                     </label>
                 </div>
                 <button type="submit" class="btn btn-success">Buscar</button>
