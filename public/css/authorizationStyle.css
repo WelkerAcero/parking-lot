@@ -1,8 +1,34 @@
 .customer-profile {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .filter {
     display: flex;
     flex-direction: row;
+}
+.container-detail-user {
+    background-color: var(--fifth);
+    border-radius: 20px;
+    padding: 30px 40px;
+    width: 40vmax;
+}
+
+.input-detail {
+    background-color: rgb(195, 193, 200);
+    border-radius: 20px;
+    text-align: center;
+    padding: 2px 0px;
+}
+
+.card-header {
+    text-align: center;
+}
+
+@media only screen and (max-width: 1300px) {
+    .customer-profile {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }

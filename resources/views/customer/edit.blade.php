@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'customer')
+@section('title', 'Customer')
 
 @section('content')
 
@@ -19,44 +19,49 @@
 
         <form action="{{ route('customer.update', $customer) }}" method="post" class="container">
             @csrf
-            @method('put')
+            <div class="user-container-form">
+                @method('put')
+                <div class="user-title-form">
+                    <h4 style="margin-right: 10px">Editar datos del usuario</h4>
+                    <img src="{{ asset('img/icons/user-regular.svg') }}" width="25px">
+                </div>
 
-            <div class="w-50">
-                <label for="">
-                    Document type: <br>
-                    <select name="doctype_id" id="doctype_id">
+                <label for="doctype_id" class="form-label user-title-dark">
+                    <b style="margin-left: 5px">Tipo de documento: </b><br>
+                    <select name="doctype_id" id="doctype_id" class="form-control input-form-ancho" required>
                         @foreach ($doctypes as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
                     </select>
                 </label>
                 <br>
-                <label for="">
-                    Ci: <br>
-                    <input type="text" class="form-control" name="ci" value="{{ old('ci', $customer->ci) }}"
-                        required>
+                <label for="ci" class="form-label user-title-dark">
+                    <b style="margin-left: 5px">Cédula: </b><br>
+                    <input type="text" class="form-control input-form-ancho" name="ci"
+                        value="{{ old('ci', $customer->ci) }}" required>
                 </label>
                 <br>
-                <label for="">
-                    Name: <br>
-                    <input type="text" class="form-control" name="name" value="{{ old('name', $customer->name) }}"
-                        required>
+                <label for="name" class="form-label user-title-dark">
+                    <b style="margin-left: 5px">Nombre: </b><br>
+                    <input type="text" class="form-control input-form-ancho" name="name"
+                        value="{{ old('name', $customer->name) }}" required>
                 </label>
                 <br>
-                <label for="">
-                    Lastname: <br>
-                    <input type="text" class="form-control" name="lastname"
+                <label for="lastname" class="form-label user-title-dark">
+                    <b style="margin-left: 5px">Apellido: </b><br>
+                    <input type="text" class="form-control input-form-ancho" name="lastname"
                         value="{{ old('lastname', $customer->lastname) }}">
                 </label>
                 <br>
-                <label for="">
-                    Email: <br>
-                    <input type="email" class="form-control" name="email" value="{{ old('email', $customer->email) }}">
+                <label for="email" class="form-label user-title-dark">
+                    <b style="margin-left: 5px">Email: </b><br>
+                    <input type="email" class="form-control input-form-ancho" name="email"
+                        value="{{ old('email', $customer->email) }}">
                 </label>
                 <br>
-                <label for="">
-                    Charge: <br>
-                    <select name="charge_id" id="charge_id">
+                <label for="charge_id" class="form-label user-title-dark">
+                    <b style="margin-left: 5px">Cargo: </b><br>
+                    <select name="charge_id" id="charge_id" class="form-control input-form-ancho">
                         @foreach ($charges as $item)
                             @if ($item->id === $customer->charge_id)
                                 <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
@@ -67,9 +72,8 @@
                     </select>
                 </label>
                 <br>
+                <button type="submit" class="btn btn-success user-btn">Editar</button>
             </div>
-            <br>
-            <button type="submit" class="btn btn-success">Guardar</button>
         </form>
     </div>
 
