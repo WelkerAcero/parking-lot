@@ -8,7 +8,7 @@
     <hr>
     <div class="container">
         <div class="customer-profile">
-            <h3><strong>Perfil del usuario</strong></h3>
+            <h3><strong>Perfil del usuario para dar acceso</strong></h3>
             @error('vehicle_id')
                 <div class="alert alert-danger" role="alert">
                     {{ $message }}
