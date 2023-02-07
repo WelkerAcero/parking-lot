@@ -21,12 +21,12 @@
     <div class="container table-responsive">
         <table class="table table-bordered table-dark table-striped table-hover">
             <thead class="text-center">
-                <th>Document type</th>
-                <th>CI</th>
-                <th>Name</th>
-                <th>Lastname</th>
+                <th>Tipo de documento</th>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Email</th>
-                <th>Charge</th>
+                <th>Cargo</th>
                 <th>Detalles</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
@@ -44,14 +44,14 @@
                         <td class="text-center">
                             <a href="{{ route('customer.show', $item->id) }}">
                                 <abbr title="Mostrar completa del perfil información" style="cursor: pointer">
-                                    <img src="{{ asset('img/icons/detail.svg') }}" width="40px">
+                                    <img src="{{ asset('img/icons/detail.svg') }}" width="30px">
                                 </abbr>
                             </a>
                         </td>
                         <td class="text-center">
                             <a href="{{ route('customer.edit', $item->id) }}">
                                 <abbr title="Editar información" style="cursor: pointer">
-                                    <img src="{{ asset('img/icons/edit.svg') }}" width="40px">
+                                    <img src="{{ asset('img/icons/edit.svg') }}" width="30px">
                                 </abbr>
                             </a>
                         </td>
@@ -61,7 +61,7 @@
                                 @method('delete')
                                 <button type="submit" class="customer-icon-del">
                                     <abbr title="Eliminar información" style="cursor: pointer">
-                                        <img src="{{ asset('img/icons/delete.svg') }}" width="40px">
+                                        <img src="{{ asset('img/icons/delete.svg') }}" width="30px">
                                     </abbr>
                                 </button>
                             </form>

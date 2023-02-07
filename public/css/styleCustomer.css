@@ -18,18 +18,56 @@
     margin: auto;
     text-align: center;
     background-color: var(--fifth);
-    width: 48vmax;
+    width: 45vmax;
     border-radius: 20px;
     text-transform: uppercase;
+    padding: 20px;
 }
 
-.form-control {
+.user-title-form {
+    display: flex;
+    justify-content: center;
+}
+
+.input-form-ancho {
     text-align: center;
-    width: 40vmax;
+    width: 35vmax;
+    border-radius: 20px;
     padding: 10px;
 }
 
 .user-title-dark {
     text-align: left;
-    font-weight: bold;
+}
+
+.user-back {
+    display: inline-flex;
+    text-decoration: none;
+    color: black;
+    border: none;
+    position: absolute;
+    padding: 2px 3px;
+}
+
+.user-back:hover {
+    box-shadow: 2px 2px 2px black;
+
+}
+
+.user-btn-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.user-btn {
+    color: white;
+    border-radius: 20px;
+    padding: 5px 25px;
+    margin: 10px 5px;
+}
+
+@media only screen and (max-width: 880px) {
+    .user-back {
+        position: relative;
+    }
 }
