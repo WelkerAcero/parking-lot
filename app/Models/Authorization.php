@@ -10,4 +10,14 @@ class Authorization extends Model
     use HasFactory;
 
     protected $fillable = ['vehicle_id', 'authorized_by', 'authorization_type'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'authorized_by');
+    }
+
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class);
+    }
 }

@@ -5,10 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AuthorizationRequest;
 use App\Models\Authorization;
 use App\Models\Customer;
-use App\Models\User;
-use App\Models\Vehicle;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AuthorizationController extends Controller
 {
@@ -24,9 +21,8 @@ class AuthorizationController extends Controller
      */
     public function index()
     {
-        $authorizations = User::with('authorization')->get();
-        return compact('authorizations');
-        /* return view('authorization.index', compact('authorizations')); */
+        $authorizations = Authorization::with('user', 'vehicle.customer')->paginate();
+        return view('authorization.index', compact('authorizations'));
     }
 
     /**

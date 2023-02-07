@@ -6,8 +6,7 @@
 
     <div class="container">
         <hr>
-        <p>Sección de botones</p>
-        <a href="{{ route('customer.create') }}">Create new customer</a>
+        <h1>Lista de autorizaciones realizadas</h1>
         <hr>
     </div>
     <div class="container">
@@ -18,9 +17,6 @@
                 <th>Nombre del dueño</th>
                 <th>Autorizado por</th>
                 <th>Tipo de Autorización</th>
-                <th>Detalles</th>
-                <th>Update</th>
-                <th>Delete</th>
             </thead>
             <tbody>
 
@@ -31,30 +27,6 @@
                         <td>{{ $item->vehicle->customer->name }}</td>
                         <td>{{ $item->user->name }}</td>
                         <td>{{ $item->authorization_type }}</td>
-                        <td> <a {{-- href="{{ route('customer.show', $item->id) }}" --}}>
-                                <abbr title="Mostrar completa del perfil información" style="cursor: pointer">
-                                    <img src="{{ asset('img/icons/detail.svg') }}" width="40px">
-                                </abbr>
-                            </a>
-                        </td>
-                        <td>
-                            <a {{-- href="{{ route('customer.edit', $item->id) }}" --}}>
-                                <abbr title="Editar información" style="cursor: pointer">
-                                    <img src="{{ asset('img/icons/edit.svg') }}" width="40px">
-                                </abbr>
-                            </a>
-                        </td>
-                        <td>
-                            <form {{-- action="{{ route('customer.destroy', $item->id) }}" method="post" --}}>
-                                @csrf
-                                @method('delete')
-                                <button type="submit">
-                                    <abbr title="Eliminar información" style="cursor: pointer">
-                                        <img src="{{ asset('img/icons/delete.svg') }}" width="40px">
-                                    </abbr>
-                                </button>
-                            </form>
-                        </td>
                     </tr>
                 @endforeach
             </tbody>
