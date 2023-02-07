@@ -29,7 +29,7 @@ class AuthorizationRequest extends FormRequest
         $customer = Customer::select('id')->where('ci', $this->customer_id)->get();
         $vehicleId = Vehicle::select('id')->where('customer_id', $customer[0]->id)->get();
 
-        if (isset($$vehicleId[0]->id)) {
+        if (isset($vehicleId[0]->id)) {
             if ($this->authorization_type == 'Entrance' || $this->authorization_type == 'Exit') {
                 $this->merge([
                     'vehicle_id' => $vehicleId[0]->id,

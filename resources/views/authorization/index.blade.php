@@ -14,8 +14,8 @@
             @csrf
             <div class="filter mb-3 w-50">
                 <div class="me-2">
-                    <label for="search">Cédula o placa del vehículo<br>
-                        <input type="text" name="filterData" placeholder="Escriba cédula o placa del vehículo">
+                    <label for="search">Cédula del cliente<br>
+                        <input type="text" name="filterData" placeholder="Escriba cédula del cliente">
                     </label>
                 </div>
                 <button type="submit" class="btn btn-success">Buscar</button>
