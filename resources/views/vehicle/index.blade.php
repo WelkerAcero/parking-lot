@@ -5,13 +5,19 @@
 @section('content')
 
     <div class="container">
-        
+        <div class="user-buttons">
+            <h2 style="margin-right: 20px">Módulo vehículo</h2>
+            <img src="{{ asset('img/icons/car-solid.svg') }}" width="30px">
+        </div>
 
-        <hr>
-        <p>Sección de botones</p>
-        <a href="{{ route('customer.create') }}">Create new vehicle</a>
-        <hr>
+        <x-button>
+            <x-slot name="type">vehicle</x-slot>
+            <x-slot name="add">Agregar Vehículo</x-slot>
+            <x-slot name="list">Listar Vehículos</x-slot>
+        </x-button>
+        {{-- <a href="{{ route('customer.create') }}">Create new customer</a> --}}
     </div>
+
     <div class="container">
         <table class="table table-dark table-hover">
             <thead>
