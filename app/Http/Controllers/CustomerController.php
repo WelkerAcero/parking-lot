@@ -9,6 +9,7 @@ use App\Models\DocType;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use League\CommonMark\Node\Block\Document;
 
 class CustomerController extends Controller
 {
@@ -28,10 +29,10 @@ class CustomerController extends Controller
 
     public function create()
     {
-        $data = new Customer();
+        $customer = new Customer();
         $doctypes = DocType::select('id', 'name')->get();
         $charges = Charge::select('id', 'name')->get();
-        return view('customer.create', compact('data','doctypes', 'charges'));
+        return view('customer.create', compact('customer','doctypes', 'charges'));
     }
 
     public function store(CustomerRequest $request)
@@ -49,13 +50,12 @@ class CustomerController extends Controller
 
     public function edit(Customer $customer)
     {
-        $data = Customer::find($customer);
         $doctypes = DocType::select('id', 'name')->get();
         $charges = Charge::select('id', 'name')->get();
-        return view('customer.edit', compact('data', 'charges', 'doctypes'));
+        return view('customer.edit', compact('customer', 'charges', 'doctypes'));
     }
 
-    public function update(CustomerRequest $request, Customer $customer)
+    public function update(CustomerRequest $request,Customer $customer)
     {
         $customer->update($request->validated());
         return redirect()->route('customer.index');

@@ -44,7 +44,7 @@ Route::controller(CustomerController::class)->group(function () {
     Route::post('/customer/store',  'store')->name('customer.store');
     Route::delete('/customer/{customer}/delete',  'destroy')->name('customer.destroy');
     Route::get('/customer/{customer}/edit',  'edit')->name('customer.edit');
-    Route::get('/customer/{customer}/update',  'update')->name('customer.update');
+    Route::put('/customer/{customer}/update',  'update')->name('customer.update');
     Route::get('/customer/{id}/detalles',  'show')->name('customer.show');
 });
 
@@ -54,6 +54,6 @@ Route::controller(VehicleController::class)->group(function () {
     Route::post('/vehicles/store',  'store')->name('vehicle.store');
     Route::delete('/vehicle/{vehicle}/delete',  'destroy')->name('vehicle.destroy');
     Route::get('/vehicle/{vehicle}/edit',  'edit')->name('vehicle.edit');
-    Route::get('/vehicle/{vehicle}/update',  'update')->name('vehicle.update');
+    Route::put('/vehicle/{vehicle}/update',  'update')->name('vehicle.update');
     Route::get('/vehicle/{id}/detalles',  'show')->name('vehicle.show');
 });

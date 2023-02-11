@@ -22,7 +22,7 @@
                 <h4 style="margin-right: 10px">Editar datos del usuario</h4>
                 <img src="{{ asset('img/icons/user-regular.svg') }}" width="25px">
             </div>
-        <form method="post" action="{{ route('customer.update', $data) }}"  class="container">
+        <form method="post" action="{{ route('customer.update', $customer) }}"  class="container">
             @csrf
             @method('put')
             @include('customer.form-fields')
