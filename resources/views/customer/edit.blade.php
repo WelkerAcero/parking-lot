@@ -15,16 +15,18 @@
             <x-slot name="add">Agregar Cliente</x-slot>
             <x-slot name="list">Listar Clientes</x-slot>
         </x-button>
-        {{-- <a href="{{ route('customer.create') }}">Create new customer</a> --}}
-
-        <form action="{{ route('customer.update', $customer) }}" method="post" class="container">
+       
+        <div class="user-container-form">
+           
+            <div class="user-title-form">
+                <h4 style="margin-right: 10px">Editar datos del usuario</h4>
+                <img src="{{ asset('img/icons/user-regular.svg') }}" width="25px">
+            </div>
+        <form method="post" action="{{ route('customer.update', $data) }}"  class="container">
             @csrf
-            <div class="user-container-form">
-                @method('put')
-                <div class="user-title-form">
-                    <h4 style="margin-right: 10px">Editar datos del usuario</h4>
-                    <img src="{{ asset('img/icons/user-regular.svg') }}" width="25px">
-                </div>
+            @method('put')
+            @include('customer.form-fields')
+            {{-- 
 
                 <label for="doctype_id" class="form-label user-title-dark">
                     <b style="margin-left: 5px">Tipo de documento: </b><br>
@@ -73,8 +75,9 @@
                 </label>
                 <br>
                 <button type="submit" class="btn btn-success user-btn">Editar</button>
-            </div>
+            </div> --}}
         </form>
     </div>
 
 @endsection
+
