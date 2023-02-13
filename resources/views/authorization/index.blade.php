@@ -1,20 +1,21 @@
 @extends('layouts.main')
 
-@section('title', 'customer')
+@section('title', 'Control acceso/salida')
 
 @section('content')
 
     <div class="container">
-        <hr>
-        <h1>Lista de autorizaciones realizadas</h1>
-        <hr>
+        <div class="user-buttons">
+            <h2 style="margin-right: 20px"><b>Lista de autorizaciones realizadas</b></h2>
+            <img src="{{ asset('img/icons/square-parking-solid.svg') }}" width="30px">
+        </div>
     </div>
     <div class="container">
         <form action="{{ route('authorization.filter') }}" method="post">
             @csrf
             <div class="filter mb-3 w-50">
                 <div class="me-2">
-                    <label for="search">Cédula del cliente<br>
+                    <label for="search"><b style="font-size: 22px">Cédula del cliente</b><br>
                         <input type="text" name="filterData" placeholder="Escriba cédula del cliente">
                     </label>
                 </div>
@@ -28,6 +29,7 @@
                 <th>Nombre del dueño</th>
                 <th>Autorizado por</th>
                 <th>Tipo de Autorización</th>
+                <th>Fecha de Autorización</th>
             </thead>
             <tbody>
 
@@ -38,6 +40,7 @@
                         <td>{{ $item->vehicle->customer->name }}</td>
                         <td>{{ $item->user->name }}</td>
                         <td>{{ $item->authorization_type }}</td>
+                        <td>{{ $item->created_at }}</td>
                     </tr>
                 @endforeach
             </tbody>

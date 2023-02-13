@@ -76,8 +76,4 @@
     @enderror
 </label>
 <br>
-<div class="user-btn-container">
-    <button type="reset" class="btn btn-primary user-btn">Limpiar</button>
-    <button type="submit" class="btn btn-success user-btn">Guardar</button>
-</div>
-</div>
+

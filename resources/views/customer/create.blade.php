@@ -22,11 +22,15 @@
                 <h4 style="margin-right: 10px">Agregar datos del usuario</h4>
                 <img src="{{ asset('img/icons/user-regular.svg') }}" width="25px">
             </div>
-        <form action="{{ route('customer.store') }}" method="post" class="container">
-            @csrf
-            @include('customer.form-fields')
-            <br>
-
+            <form action="{{ route('customer.store') }}" method="post" class="container">
+                @csrf
+                @include('customer.form-fields')
+      
+                <div class="user-btn-container">
+                    <button type="reset" class="btn btn-primary user-btn">Limpiar</button>
+                    <button type="submit" class="btn btn-success user-btn">Guardar</button>
+                </div>
+        </div>
         </form>
     </div>
 @endsection

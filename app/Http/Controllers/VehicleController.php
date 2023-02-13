@@ -17,18 +17,19 @@ class VehicleController extends Controller
         return view('vehicle.index', compact('vehicles'));
     }
 
-    public function show(Vehicle $id)
-    {
-        $vehicle = Vehicle::with('engine', 'customer')->find($id);
-        $vehicle = $vehicle[0];
-        return view('vehicle.show', compact('vehicle'));
-    }
+    // public function show(Vehicle $id)
+    // {
+    //     $vehicle = Vehicle::with('engine', 'customer')->find($id);
+    //     $vehicle = $vehicle[0];
+    //     return view('vehicle.show', compact('vehicle'));
+    // }
 
     public function create()
     {
+        $vehicle = new Vehicle();
         $owner = Customer::select('id', 'name')->get();
         $engines = TypeEngine::select('id', 'name')->get();
-        return view('vehicle.create', compact('owner', 'engines'));
+        return view('vehicle.create', compact('vehicle', 'owner', 'engines'));
     }
 
     public function store(VehicleRequest $request)
@@ -45,8 +46,10 @@ class VehicleController extends Controller
         return view('vehicle.edit', compact('vehicle', 'owner', 'engines'));
     }
 
-    public function update(Request $request, $id)
+    public function update(VehicleRequest $request, Vehicle $vehicle)
     {
+        $vehicle->update($request->validated());
+        return redirect()->route('vehicle.index');
     }
 
     public function destroy(Vehicle $vehicle)
