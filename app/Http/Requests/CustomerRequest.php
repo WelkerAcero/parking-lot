@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
@@ -25,7 +26,7 @@ class CustomerRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'url' => 'http://127.0.0.1:8000/authorization/' . $this->ci,
+            'url' => Request::root() . '/authorization/' . $this->ci,
             'created_by' => Auth::user()->id
         ]);
     }
