@@ -79,7 +79,8 @@
 
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link menu-text" href="#" role="button" aria-expanded="false">
+                                    <a class="nav-link menu-text" href="{{ route('authorization.index') }}" role="button"
+                                        aria-expanded="false">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="30px"
                                             style="margin: 2px 10px">
                                             <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -95,7 +96,8 @@
                                         <form action="{{ route('logout') }}" method="post">
                                             @csrf
                                             <button type="submit" class="navbar-brand logout menu-text">
-                                                <img src="{{ asset('img/icons/salir.png') }}" width="25px" style="margin: 2px 10px">
+                                                <img src="{{ asset('img/icons/salir.png') }}" width="25px"
+                                                    style="margin: 2px 10px">
                                                 Cerrar sesión
                                             </button>
                                         </form>
