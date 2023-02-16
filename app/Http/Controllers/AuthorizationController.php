@@ -60,7 +60,7 @@ class AuthorizationController extends Controller
     public function store(AuthorizationRequest $request)
     {
         Authorization::create($request->validated());
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('authorization.index');
     }
 
     /**
