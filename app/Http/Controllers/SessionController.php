@@ -32,7 +32,7 @@ class SessionController extends Controller
 
         if (strlen($request->input('password')) <= 6) {
             $this->res = 'El password debe ser mayor a 6 caracteres';
-            return view('login_view.login', ['msgErr' => $this->res]);
+            return view('login_views.login', ['msgErr' => $this->res]);
         }
 
         if ($user = Auth::attempt($request->only('email', 'password'))) {
@@ -41,10 +41,9 @@ class SessionController extends Controller
                 $request->session()->put('authenticated', Auth::user()->name);
                 return redirect()->intended('dashboard');
             }
-
-            $this->res = 'Error - Usuario o contraseña no valido';
-            return view('login_view.login', ['msgErr' => $this->res]);
         }
+        $this->res = 'Error - Usuario o contraseña no valido';
+        return view('login_views.login', ['msgErr' => $this->res]);
     }
 
     public function preloader()
