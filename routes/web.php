@@ -3,8 +3,10 @@
 use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\VehicleController;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,6 +27,15 @@ Route::controller(SessionController::class)->group(function () {
     Route::post('/login', 'authentication')->name('validate.user');
     Route::post('/logout', 'logout')->name('logout');
     Route::get('/preloader', 'preloader')->name('preloader');
+});
+
+Route::controller(PasswordResetController::class)->group(function () {
+
+    Route::get('/forgot-password', 'index')->name('pass.request');
+    Route::post('/request-password', 'reset')->name('send.link');
+
+    Route::get('/reset-password/{token}', 'changePassView')->name('password.reset');
+    Route::post('/reset-password', 'changePass')->name('change.pass');
 });
 
 Route::controller(DashboardController::class)->group(function () {

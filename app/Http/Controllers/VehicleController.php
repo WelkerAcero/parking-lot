@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class VehicleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $vehicles = Vehicle::with('engine', 'customer')->paginate();

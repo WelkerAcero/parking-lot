@@ -39,7 +39,13 @@
 
 .login-left-btn {
     background: var(--third);
-    color: var(--sixth)
+    color: var(--sixth);
+}
+
+.login-left-btn:hover {
+    transition: 0.7s;
+    background: var(--thirdHovered);
+    color: var(--sixth);
 }
 
 .login-error {

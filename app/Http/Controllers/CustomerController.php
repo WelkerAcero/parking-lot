@@ -14,6 +14,11 @@ use League\CommonMark\Node\Block\Document;
 class CustomerController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $customers = Customer::with('doctype', 'charge')->paginate();
@@ -32,7 +37,7 @@ class CustomerController extends Controller
         $customer = new Customer();
         $doctypes = DocType::select('id', 'name')->get();
         $charges = Charge::select('id', 'name')->get();
-        return view('customer.create', compact('customer','doctypes', 'charges'));
+        return view('customer.create', compact('customer', 'doctypes', 'charges'));
     }
 
     public function store(CustomerRequest $request)
@@ -55,7 +60,7 @@ class CustomerController extends Controller
         return view('customer.edit', compact('customer', 'charges', 'doctypes'));
     }
 
-    public function update(CustomerRequest $request,Customer $customer)
+    public function update(CustomerRequest $request, Customer $customer)
     {
         $customer->update($request->validated());
         return redirect()->route('customer.index');

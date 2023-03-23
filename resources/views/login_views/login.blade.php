@@ -16,11 +16,11 @@
 
                 <div class="login-contain-form">
                     <p class="login-error">{{ $msgErr ?? '' }}</p>
+                    <p class="login-error">{{ $status ?? '' }}</p>
                 </div>
 
                 <form action="{{ route('validate.user') }}" method="post">
-                    <br><br>
-                    <h2 class="login-form-text">Por favor ingrese sus credenciales</h2>
+                    <h2 class="login-form-text mt-5">Por favor ingrese sus credenciales</h2>
                     @csrf
                     <div class="login-contain-form">
                         <label class="login-form" for="email" style="color:white">Email</label>
@@ -39,9 +39,12 @@
                             <p class="login-error">{{ $message }}</p>
                         @enderror
                     </div>
-                    <br><br>
+                    <br>
                     <button class="form-control login-left-btn" type="submit">Acceder</button>
                 </form>
+                <p class="text-white mt-3">¿Has olvidado tu contraseña? <br>
+                    <a href="{{ route('pass.request') }}">Click aquí</a>
+                </p>
             </div>
 
             {{-- PART RIGHT --}}
