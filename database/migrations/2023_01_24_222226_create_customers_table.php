@@ -35,6 +35,7 @@ class CreateCustomersTable extends Migration
                 ->constrained('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

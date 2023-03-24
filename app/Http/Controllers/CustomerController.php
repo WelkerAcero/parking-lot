@@ -43,12 +43,6 @@ class CustomerController extends Controller
     public function store(CustomerRequest $request)
     {
         Customer::create($request->validated());
-        /*  $admin = User::find(Auth::user()->id);
-        $customer = new Customer([
-            'url' => 'http://127.0.0.1:8000/authorization/' . $request->input('ci'),
-            'created_by' => Auth::user()->id
-        ]);
-        $admin->customer()->save($customer); */
         return redirect()->route('customer.index');
     }
 

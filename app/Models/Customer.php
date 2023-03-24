@@ -10,11 +10,12 @@ class Customer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['doctype_id', 'ci', 'name', 'lastname', 'email', 'url', 'charge_id', 'created_by'];
-    /* 
-    protected $attributes = [
-        'url' => 'http://127.0.0.1:8000/authorization/',
-    ]; */
+    protected $fillable = ['doctype_id', 'ci', 'name', 'lastname', 'email', 'cellphone', 'url', 'charge_id', 'status', 'created_by'];
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = ucfirst($value);
+    }
 
     public function doctype()
     {

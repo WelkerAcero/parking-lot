@@ -104,11 +104,23 @@
                                         </a>
                                         <ul class="dropdown-menu">
                                             <li><a class="dropdown-item" href="#">
-                                                    Agregar administrador
+                                                    Configuración de perfiles
                                                 </a>
                                             </li>
                                             <li><a class="dropdown-item" href="#">
-                                                    Listar administradores
+                                                    Editar mi perfil
+                                                </a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">
+                                                    Configurar cargos
+                                                </a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">
+                                                    Configurar tipos de documentos
+                                                </a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">
+                                                    Configurar tipos de motores
                                                 </a>
                                             </li>
                                         </ul>

@@ -65,7 +65,6 @@
 @error('cellphone')
     <p style="color: red">*{{ $message }}</p>
 @enderror
-
 <br>
 
 <label for="charge_id" class="form-label user-title-dark">
@@ -86,4 +85,3 @@
         <p style="color: red">*{{ $message }}</p>
     @enderror
 </label>
-<br>

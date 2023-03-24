@@ -26,6 +26,7 @@ class CustomerFactory extends Factory
             'cellphone' => $this->faker->numerify('##########'),
             'url' => Str::random(10),
             'charge_id' => Charge::factory(),
+            'status' => False,
             'created_by' => User::factory(),
         ];
     }
