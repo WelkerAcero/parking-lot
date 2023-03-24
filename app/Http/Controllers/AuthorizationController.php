@@ -8,6 +8,8 @@ use App\Models\Customer;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
+use function PHPSTORM_META\type;
+
 class AuthorizationController extends Controller
 {
 
@@ -21,21 +23,43 @@ class AuthorizationController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
+
     public function getFilteredData(Request $request)
     {
-        $customer = Customer::select('id')->where('ci', $request->filterData)->get();
-        $vehicle = Vehicle::where('customer_id', $customer[0]->id)->get();
-        $authorizations = Authorization::with('user', 'vehicle.customer')->where('vehicle_id', $vehicle[0]->id)->get();
-        return $this->index($authorizations);
+        $authorizations = array();
+
+        if (isset($request->getById) || isset($request->getByDate)) {
+            if (isset($request->getById) && isset($request->getByDate)) {
+                $customer = Customer::select('id')->where('ci', $request->getById)->where('created_at', '>', $request->getByDate . ' 00:00:00')->get();
+            } else if (isset($request->getByDate)) {
+                $customer = Customer::select('id')->where('created_at', '>=', $request->getByDate . ' 00:00:00')->get();
+            } else {
+                $customer = Customer::select('id')->where('ci', $request->getById)->get();
+            }
+
+            if (count($customer) === 0) {
+                return $this->index('Error');
+            }
+
+            $vehicle = Vehicle::where('customer_id', $customer[0]->id)->get();
+            $authorizations = Authorization::with('user', 'vehicle.customer')->where('vehicle_id', $vehicle[0]->id)->paginate(15);
+            return $this->index($authorizations);
+        }
     }
 
     public function index($filter = null)
     {
-        if (isset($filter)) {
+        if ($filter !== null && $filter !== 'Error') {
             $authorizations = $filter;
             return view('authorization.index', compact('authorizations'));
         }
-        $authorizations = Authorization::with('user', 'vehicle.customer')->paginate();
+
+        if ($filter !== null && $filter === 'Error') {
+            return view('authorization.index', ['msgError' => 'Error: No existen registros en el filtro solicitado']);
+        }
+
+        $authorizations = Authorization::with('user', 'vehicle.customer')->paginate(15);
         return view('authorization.index', compact('authorizations'));
     }
 

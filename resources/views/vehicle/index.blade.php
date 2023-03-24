@@ -27,7 +27,7 @@
                 <th>Marca</th>
                 <th>Nombre del dueño</th>
                 <th>Id del dueño</th>
-                <th>Tipo de motor</th>         
+                <th>Tipo de motor</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </thead>
@@ -42,7 +42,7 @@
                         <td>{{ $item->customer->name }}</td>
                         <td>{{ $item->customer->ci }}</td>
                         <td>{{ $item->engine->name }}</td>
-                        
+
                         <td class="text-center">
                             <a href="{{ route('vehicle.edit', $item->id) }}">
                                 <abbr title="Editar información" style="cursor: pointer">
@@ -65,5 +65,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="paginator mt-5">
+            {{ $vehicles->links() }}
+        </div>
     </div>
 @endsection

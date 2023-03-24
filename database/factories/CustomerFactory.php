@@ -23,6 +23,7 @@ class CustomerFactory extends Factory
             'name' => Str::random(10),
             'lastname' => Str::random(10),
             'email' => $this->faker->unique()->safeEmail(),
+            'cellphone' => $this->faker->numerify('##########'),
             'url' => Str::random(10),
             'charge_id' => Charge::factory(),
             'created_by' => User::factory(),

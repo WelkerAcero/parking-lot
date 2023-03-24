@@ -25,3 +25,8 @@
     background-position: bottom;
     background-attachment: fixed;
 }
+
+.paginator {
+    display: flex;
+    justify-content: center;
+}

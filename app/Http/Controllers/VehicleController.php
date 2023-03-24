@@ -18,7 +18,7 @@ class VehicleController extends Controller
 
     public function index()
     {
-        $vehicles = Vehicle::with('engine', 'customer')->paginate();
+        $vehicles = Vehicle::with('engine', 'customer')->paginate(15);
         /* return compact('vehicles'); */
         return view('vehicle.index', compact('vehicles'));
     }

@@ -57,11 +57,22 @@
 @enderror
 
 <br>
+<label for="cellphone" class="form-label user-title-dark">
+    <b style="margin-left: 5px">Número de celular:</b> <br>
+    <input type="number" class="form-control input-form-ancho" name="cellphone"
+        value="{{ old('cellphone', $customer->cellphone) }}" placeholder="Digite el número de celular">
+</label>
+@error('cellphone')
+    <p style="color: red">*{{ $message }}</p>
+@enderror
+
+<br>
+
 <label for="charge_id" class="form-label user-title-dark">
     <b style="margin-left: 5px">Cargo:</b> <br>
     <select name="charge_id" id="charge_id" class="form-control input-form-ancho"
         value="{{ old('charge_id', $customer->charge) }}">
-        <option value="" disabled selected hidden>Seleccione el cargo/puesto</option>
+        <option value="" disabled selected hidden> Seleccione el cargo/puesto</option>
         @foreach ($charges as $item)
             @if ($item->id === $customer->charge_id)
                 <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
@@ -76,4 +87,3 @@
     @enderror
 </label>
 <br>
-

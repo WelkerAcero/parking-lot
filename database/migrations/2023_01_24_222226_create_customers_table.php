@@ -24,6 +24,7 @@ class CreateCustomersTable extends Migration
             $table->string('name', 20);
             $table->string('lastname', 20)->nullable();
             $table->string('email', 30)->nullable()->unique();
+            $table->string('cellphone', 10);
             $table->string('url')->unique();
             $table->foreignId('charge_id')
                 ->nullable()

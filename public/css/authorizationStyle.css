@@ -4,8 +4,20 @@
     justify-content: space-between;
 }
 
+.search-container {
+    display: flex;
+    border-bottom: 1px solid black;
+    margin: 30px 0px;
+}
+
+.filter-section {
+    display: flex;
+    flex-direction: row;
+}
+
 .filter {
     display: flex;
+    margin-left: 15px;
     flex-direction: row;
 }
 

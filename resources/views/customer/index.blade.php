@@ -70,5 +70,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="paginator mt-5">
+            {{ $customers->links() }}
+        </div>
     </div>
 @endsection
