@@ -18,15 +18,14 @@ class CustomerFactory extends Factory
     public function definition()
     {
         return [
-            'doctype_id' => DocType::factory(),
+            'doctype_id' => 2,
             'ci' => $this->faker->numerify('##########'),
             'name' => Str::random(10),
             'lastname' => Str::random(10),
             'email' => $this->faker->unique()->safeEmail(),
             'cellphone' => $this->faker->numerify('##########'),
             'url' => Str::random(10),
-            'charge_id' => Charge::factory(),
-            'status' => False,
+            'charge_id' => 1,
             'created_by' => User::factory(),
         ];
     }

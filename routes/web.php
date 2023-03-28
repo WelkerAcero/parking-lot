@@ -45,6 +45,7 @@ Route::controller(DashboardController::class)->group(function () {
 Route::controller(AuthorizationController::class)->group(function () {
     Route::get('/authorizations', 'index')->name('authorization.index');
     Route::get('/authorization/{customer_id}', 'create')->name('authorization.create');
+    Route::get('/authorizations/current_cars', 'getCurrentParkedCars')->name('authorization.current');
     Route::post('/authorization/store', 'store')->name('authorization.store');
     Route::post('/authorization/filter', 'getFilteredData')->name('authorization.filter');
 });

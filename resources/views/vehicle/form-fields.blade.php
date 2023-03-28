@@ -43,17 +43,16 @@
 </label>
 
 <label for="engine_id" class="form-label user-title-dark">
-    <b style="margin-left: 5px">Motor: </b><br>
-    <select name="engine_id" id="engine_id" class="form-control input-form-ancho"
-        value="{{ old('engine_id', $vehicle->engine_id) }}" required>
-        <option value="" disabled selected hidden>Seleccione el tipo de motor</option>
+    <b style="margin-left: 5px">Tipo de automóvil: </b><br>
+    <select name="vehicle_type_id" id="vehicle_type_id" class="form-control input-form-ancho"
+        value="{{ old('vehicle_type_id', $vehicle->vehicle_type_id) }}" required>
+
         @foreach ($engines as $item)
-            @if ($item->id === $vehicle->engine_id)
+            @if ($item->id === $vehicle->vehicle_type_id)
                 <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
             @else
                 <option value="{{ $item->id }}">{{ $item->name }}</option>
             @endif
-            <option value="{{ $item->id }}">{{ $item->name }}</option>
         @endforeach
     </select>
 </label>

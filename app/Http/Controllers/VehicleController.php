@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\VehicleRequest;
 use App\Models\Customer;
-use App\Models\TypeEngine;
+use App\Models\VehicleType;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
@@ -18,7 +18,8 @@ class VehicleController extends Controller
 
     public function index()
     {
-        $vehicles = Vehicle::with('engine', 'customer')->paginate(15);
+        $vehicles = Vehicle::with('vehicle', 'customer')->paginate(15);
+        /* $vehicles = $vehicles[0]; */
         /* return compact('vehicles'); */
         return view('vehicle.index', compact('vehicles'));
     }
@@ -34,7 +35,7 @@ class VehicleController extends Controller
     {
         $vehicle = new Vehicle();
         $owner = Customer::select('id', 'name')->get();
-        $engines = TypeEngine::select('id', 'name')->get();
+        $engines = VehicleType::select('id', 'name')->get();
         return view('vehicle.create', compact('vehicle', 'owner', 'engines'));
     }
 
@@ -48,12 +49,13 @@ class VehicleController extends Controller
     public function edit(Vehicle $vehicle)
     {
         $owner = Customer::select('id', 'name')->get();
-        $engines = TypeEngine::select('id', 'name')->get();
+        $engines = VehicleType::select('id', 'name')->get();
         return view('vehicle.edit', compact('vehicle', 'owner', 'engines'));
     }
 
     public function update(VehicleRequest $request, Vehicle $vehicle)
     {
+        /* return $request->all(); */
         $vehicle->update($request->validated());
         return redirect()->route('vehicle.index');
     }

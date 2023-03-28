@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use Database\Seeders\VehicleSeeder;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DocTypeFactory extends Factory
+class VehicleTypeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,7 +16,7 @@ class DocTypeFactory extends Factory
     public function definition()
     {
         return [
-            'name' => Str::random(10),
+            'name' => 'Carro',
         ];
     }
 }

@@ -30,13 +30,19 @@ class AuthorizationRequest extends FormRequest
         $vehicleId = Vehicle::select('id')->where('customer_id', $customer[0]->id)->get();
 
         if (isset($vehicleId[0]->id)) {
-            if ($this->authorization_type == 'Entrance' || $this->authorization_type == 'Exit') {
-                $this->merge([
-                    'vehicle_id' => $vehicleId[0]->id,
-                    'authorized_by' => Auth::user()->id,
-                    'authorization_type' => $this->authorization_type,
-                ]);
+            if ($this->authorization_type === 'Entrance') {
+                $status = True;
             }
+            if ($this->authorization_type === 'Exit') {
+                $status = False;
+            }
+
+            $this->merge([
+                'vehicle_id' => $vehicleId[0]->id,
+                'authorized_by' => Auth::user()->id,
+                'authorization_type' => $this->authorization_type,
+                'status' => $status,
+            ]);
         }
     }
 
@@ -51,6 +57,7 @@ class AuthorizationRequest extends FormRequest
             'vehicle_id' => 'required',
             'authorized_by' => 'required',
             'authorization_type' => 'required',
+            'status' => 'required',
         ];
     }
 

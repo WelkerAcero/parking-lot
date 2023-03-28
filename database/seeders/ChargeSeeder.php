@@ -14,6 +14,12 @@ class ChargeSeeder extends Seeder
      */
     public function run()
     {
-        Charge::factory()->count(3)->create();
+        $charges = array('Visitantes', 'Profesor', 'Administrativo', 'CallCenter', 'Limpieza', 'Secretaria', 'Director', 'Decano', 'Bienestar Institucional', 'Bibliotecari@s', 'Rector', 'Biserector', 'Coordinadores');
+
+        for ($i = 0; $i < count($charges); $i++) {
+            $charge[$i] = new Charge();
+            $charge[$i]->name = $charges[$i];
+            $charge[$i]->save();
+        }
     }
 }

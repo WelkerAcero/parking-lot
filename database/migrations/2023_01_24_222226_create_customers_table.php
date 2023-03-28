@@ -26,16 +26,16 @@ class CreateCustomersTable extends Migration
             $table->string('email', 30)->nullable()->unique();
             $table->string('cellphone', 10);
             $table->string('url')->unique();
+
             $table->foreignId('charge_id')
                 ->nullable()
                 ->constrained('charges')
-                ->onUpdate('cascade')
-                ->onDelete('set null');
+                ->onUpdate('cascade');
+
             $table->foreignId('created_by')
                 ->constrained('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->boolean('status');
+                ->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

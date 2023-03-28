@@ -11,9 +11,16 @@
         </div>
 
         <div class="component-button">
-            <a href='{{ route('authorization.index') }}' id="button-list-off" class="boton-clear button-list-off">
-                Mostrar todos
-            </a>
+            <div class="mt-3">
+                <a href='{{ route('authorization.index') }}' id="button-list-off" class="boton-clear button-list-off">
+                    Mostrar todos
+                </a>
+            </div>
+            <div class="mt-3">
+                <a href='{{ route('authorization.current') }}' id="button-list-off" class="boton-clear button-add-off">
+                    Mostrar parqueados
+                </a>
+            </div>
         </div>
     </div>
 
@@ -32,11 +39,13 @@
                         <input type="date" name="getByDate" placeholder="fecha: year/month/day">
                     </label>
                 </div>
+
                 <div>
                     <button class="form-control login-left-btn mt-4" type="submit">Buscar</button>
                 </div>
             </div>
         </form>
+
     </div>
     @if (isset($msgError))
         <div class="container d-flex justify-content-center alert alert-danger" role="alert">
@@ -51,6 +60,7 @@
                         <th>Cédula del dueño</th>
                         <th>Nombre del dueño</th>
                         <th>Autorizado por</th>
+                        {{-- <th>¿Estacionado?</th> --}}
                         <th>Tipo de Autorización</th>
                         <th>Fecha de Autorización</th>
                     </thead>
@@ -62,6 +72,13 @@
                                 <td>{{ $item->vehicle->customer->ci }}</td>
                                 <td>{{ $item->vehicle->customer->name }}</td>
                                 <td>{{ $item->user->name }}</td>
+                                {{-- <td>
+                                    @if ($item->status)
+                                        Si
+                                    @else
+                                        No
+                                    @endif
+                                </td> --}}
                                 <td>{{ $item->authorization_type }}</td>
                                 <td>{{ $item->created_at }}</td>
                             </tr>

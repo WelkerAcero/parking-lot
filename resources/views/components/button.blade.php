@@ -1,4 +1,4 @@
-<div style="display: flex">
+<div style="display: flex; align-items:center">
     <div class="component-button">
         <a href='{{ route("$type.create") }}' id="button-add-off" class="boton-clear button-add-off">
             {{ $add }}

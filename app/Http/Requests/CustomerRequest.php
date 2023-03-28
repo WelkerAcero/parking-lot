@@ -28,7 +28,6 @@ class CustomerRequest extends FormRequest
         $this->merge([
             'url' => Request::root() . '/authorization/' . $this->ci,
             'created_by' => Auth::user()->id,
-            'status' => False,
         ]);
     }
 
@@ -50,7 +49,6 @@ class CustomerRequest extends FormRequest
                 'url' => 'required', Rule::unique('customers')->ignore($this->customer->id),
                 'charge_id' => 'required',
                 'created_by' => 'required',
-                'status' => 'required'
             ];
         }
         if ($this->isMethod('POST')) {
@@ -64,7 +62,6 @@ class CustomerRequest extends FormRequest
                 'url' => 'required|unique:customers',
                 'charge_id' => 'required',
                 'created_by' => 'required',
-                'status' => 'required',
             ];
         }
     }

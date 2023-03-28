@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Customer;
-use App\Models\TypeEngine;
+use App\Models\VehicleType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class VehicleFactory extends Factory
@@ -21,7 +21,7 @@ class VehicleFactory extends Factory
             'model' => '2015',
             'brand' => 'Hyundai',
             'customer_id' => Customer::factory(),
-            'engine_id' => TypeEngine::factory(),
+            'vehicle_type_id' => VehicleType::factory(),
         ];
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TypeEngine extends Model
+class VehicleType extends Model
 {
     use HasFactory;
 
@@ -13,6 +13,6 @@ class TypeEngine extends Model
 
     public function vehicle()
     {
-        return $this->hasMany(Vehicle::class);
+        return $this->hasMany(VehicleType::class);
     }
 }

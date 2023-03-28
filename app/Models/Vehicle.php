@@ -9,16 +9,16 @@ class Vehicle extends Model
 {
     use HasFactory;
 
-    public $fillable = ['l_plate', 'color', 'model', 'brand', 'customer_id', 'engine_id'];
+    public $fillable = ['l_plate', 'color', 'model', 'brand', 'customer_id', 'vehicle_type_id'];
 
     public function customer()
     {
         return $this->belongsTo(Customer::class);
     }
 
-    public function engine()
+    public function vehicle()
     {
-        return $this->belongsTo(TypeEngine::class, 'engine_id');
+        return $this->belongsTo(VehicleType::class, 'vehicle_type_id');
     }
 
     public function authorization()

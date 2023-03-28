@@ -14,6 +14,12 @@ class DocTypeSeeder extends Seeder
      */
     public function run()
     {
-        DocType::factory()->count(3)->create();
+        $docTypes = array('TI', 'CC', 'RC', 'CE', 'NIP', 'NUIP');
+
+        for ($i = 0; $i < count($docTypes); $i++) {
+            $docType[$i] = new DocType();
+            $docType[$i]->name = $docTypes[$i];
+            $docType[$i]->save();
+        }
     }
 }

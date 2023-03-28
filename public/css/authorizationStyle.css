@@ -1,3 +1,9 @@
+.component-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
 .customer-profile {
     display: flex;
     flex-direction: row;
@@ -57,4 +63,35 @@
 
 .au-page-input {
     background: rgb(195, 193, 200);
+}
+
+.profile-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.qr-buttons-container {
+    width: 50%;
+    text-align: center;
+}
+
+.qr-buttons-container button {
+    width: 58%;
+    text-align: center;
+}
+
+@media only screen and (max-width: 607px) {
+    .profile-container {
+        display: block;
+    }
+
+    .qr-buttons-container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .qr-buttons-container button {
+        width: 78%;
+        text-align: center;
+    }
 }

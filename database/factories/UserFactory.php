@@ -16,7 +16,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'doctype_id' => DocType::factory(),
+            'doctype_id' => 2,
             'ci' => $this->faker->numerify('##########'),
             'name' => $this->faker->name(),
             'lastname' => $this->faker->name(),

@@ -23,7 +23,7 @@ class VehicleRequest extends FormRequest
                 'model' => 'required|max:4',
                 'brand' => 'required|max:20',
                 'customer_id' => 'required', Rule::unique('vehicles')->ignore($this->vehicle->id),
-                'engine_id' => 'required',
+                'vehicle_type_id' => 'required',
             ];
         }
         if ($this->isMethod('POST')) {
@@ -33,7 +33,7 @@ class VehicleRequest extends FormRequest
                 'model' => 'required|max:4',
                 'brand' => 'required|max:20',
                 'customer_id' => 'required',
-                'engine_id' => 'required',
+                'vehicle_type_id' => 'required',
             ];
         }
     }

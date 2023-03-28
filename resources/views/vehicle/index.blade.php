@@ -27,7 +27,7 @@
                 <th>Marca</th>
                 <th>Nombre del dueño</th>
                 <th>Id del dueño</th>
-                <th>Tipo de motor</th>
+                <th>Tipo de automóvil</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </thead>
@@ -41,7 +41,7 @@
                         <td>{{ $item->brand }}</td>
                         <td>{{ $item->customer->name }}</td>
                         <td>{{ $item->customer->ci }}</td>
-                        <td>{{ $item->engine->name }}</td>
+                        <td>{{ $item->vehicle->name }}</td>
 
                         <td class="text-center">
                             <a href="{{ route('vehicle.edit', $item->id) }}">
@@ -65,6 +65,9 @@
                 @endforeach
             </tbody>
         </table>
+        @foreach ($vehicles as $item)
+            <h1>{{ $item->vehicle_type }}</h1>
+        @endforeach
         <div class="paginator mt-5">
             {{ $vehicles->links() }}
         </div>
