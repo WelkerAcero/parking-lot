@@ -17,7 +17,7 @@
                 </a>
             </div>
             <div class="mt-3">
-                <a href='{{ route('authorization.current') }}' id="button-list-off" class="boton-clear button-add-off">
+                <a href='{{ route('authorization.current') }}' id="button-add-off" class="boton-clear button-add-off">
                     Mostrar parqueados
                 </a>
             </div>

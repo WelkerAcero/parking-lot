@@ -25,13 +25,10 @@ class AuthorizationController extends Controller
 
     public function getCurrentParkedCars()
     {
-        $authorizations = Authorization::latest('created_at')
-            ->where('status', True)
-            ->where('created_at', '>=', date("Y-m-d") . '00:00:00')
-            ->paginate(15);
-        return $authorizations;
-        /* ->paginate(15); */
-        /* return $this->index($authorizations); */
+        $getAuthorizations = Authorization::with('user', 'vehicle.customer')
+            ->whereRelation('vehicle.customer', 'status', 1)
+            ->paginate();
+        return $this->index($getAuthorizations);
     }
 
     public function getFilteredData(Request $request)
@@ -81,18 +78,6 @@ class AuthorizationController extends Controller
     public function create($customer_id)
     {
         $customer = Customer::with('charge', 'vehicle')->where('ci', $customer_id)->get()[0];
-        $to_check_vehic_id = Vehicle::where('customer_id', $customer->id)->get()[0];
-        $vehicle_id = $to_check_vehic_id->id;
-        $auth = Authorization::where('vehicle_id', $vehicle_id)->get();
-
-        ## Verificar si existe, traer el último status = entrada o salida 
-        if (count($auth) > 0) {
-            $lastRecordStatus = Authorization::where('vehicle_id', $vehicle_id)
-                ->latest('created_at')
-                ->value('status');
-
-            return view('authorization.create', compact('customer', 'lastRecordStatus'));
-        }
 
         if (!empty($customer)) {
             return view('authorization.create', compact('customer'));
@@ -100,7 +85,6 @@ class AuthorizationController extends Controller
             $msgError = "No se encuentra registrado en el sistema";
             return view('authorization.create', compact('msgError'));
         }
-
 
         /* $auth =  Authorization::with('vehicle.customer.charge')->where('vehicle_id', $vehicle_id)->get();
         return view('authorization.create', ['auth' => $auth[0]]); */

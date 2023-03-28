@@ -32,6 +32,8 @@ class CreateCustomersTable extends Migration
                 ->constrained('charges')
                 ->onUpdate('cascade');
 
+            $table->boolean('status')->default(False);
+
             $table->foreignId('created_by')
                 ->constrained('users')
                 ->onUpdate('cascade');

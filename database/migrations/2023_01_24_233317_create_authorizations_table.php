@@ -18,7 +18,6 @@ class CreateAuthorizationsTable extends Migration
             $table->foreignId('vehicle_id')->constrained('vehicles')->onUpdate('cascade');
             $table->foreignId('authorized_by')->constrained('users')->onUpdate('cascade');
             $table->string('authorization_type', 10);
-            $table->boolean('status');
             $table->timestamps();
         });
     }

@@ -48,7 +48,7 @@
                         <h4>Cargo: </h4>
                         <h4 class="au-page-input">{{ $customer->charge->name }}</h4>
                         <h4>Status: </h4>
-                        @if (isset($lastRecordStatus))
+                        @if ($customer->status)
                             <h4 class="au-page-input">Se encuentra parqueado</h4>
                         @else
                             <h4 class="au-page-input">No se encuentra parqueado</h4>
@@ -61,7 +61,7 @@
                         </div>
                         <div><br>
 
-                            @if (!isset($lastRecordStatus))
+                            @if (!$customer->status)
                                 <div>
                                     <form action="{{ route('authorization.store') }}" method="post">
                                         @csrf

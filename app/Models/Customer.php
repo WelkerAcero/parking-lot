@@ -10,7 +10,11 @@ class Customer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['doctype_id', 'ci', 'name', 'lastname', 'email', 'cellphone', 'url', 'charge_id', 'status', 'created_by'];
+    protected $fillable = [
+        'doctype_id', 'ci', 'name',
+        'lastname', 'email', 'cellphone',
+        'url', 'charge_id', 'status', 'created_by'
+    ];
 
     public function setNameAttribute($value)
     {

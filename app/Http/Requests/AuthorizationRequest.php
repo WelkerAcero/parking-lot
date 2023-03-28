@@ -23,13 +23,12 @@ class AuthorizationRequest extends FormRequest
         }
     }
 
-
     protected function prepareForValidation()
     {
-        $customer = Customer::select('id')->where('ci', $this->customer_id)->get();
-        $vehicleId = Vehicle::select('id')->where('customer_id', $customer[0]->id)->get();
+        $customer = Customer::select('id', 'status')->where('ci', $this->customer_id)->get()[0];
+        $vehicleId = Vehicle::select('id')->where('customer_id', $customer->id)->get()[0];
 
-        if (isset($vehicleId[0]->id)) {
+        if (isset($vehicleId->id)) {
             if ($this->authorization_type === 'Entrance') {
                 $status = True;
             }
@@ -37,11 +36,13 @@ class AuthorizationRequest extends FormRequest
                 $status = False;
             }
 
+            $customer->status = $status;
+            $customer->update([$customer->status]);
+
             $this->merge([
-                'vehicle_id' => $vehicleId[0]->id,
+                'vehicle_id' => $vehicleId->id,
                 'authorized_by' => Auth::user()->id,
                 'authorization_type' => $this->authorization_type,
-                'status' => $status,
             ]);
         }
     }
@@ -57,7 +58,6 @@ class AuthorizationRequest extends FormRequest
             'vehicle_id' => 'required',
             'authorized_by' => 'required',
             'authorization_type' => 'required',
-            'status' => 'required',
         ];
     }
 

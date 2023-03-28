@@ -9,7 +9,7 @@ class Authorization extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['vehicle_id', 'authorized_by', 'authorization_type', 'status'];
+    protected $fillable = ['vehicle_id', 'authorized_by', 'authorization_type'];
 
     public function user()
     {
