@@ -39,8 +39,20 @@
                         <td>{{ $item->color }}</td>
                         <td>{{ $item->model }}</td>
                         <td>{{ $item->brand }}</td>
-                        <td>{{ $item->customer->name }}</td>
-                        <td>{{ $item->customer->ci }}</td>
+                        <td>
+                            @if (!empty($item->customer->name))
+                                {{ $item->customer->name }}
+                            @else
+                                Cliente eliminado
+                            @endif
+                        </td>
+                        <td>
+                            @if (!empty($item->customer->ci))
+                                {{ $item->customer->ci }}
+                            @else
+                                Cliente eliminado
+                            @endif
+                        </td>
                         <td>{{ $item->vehicle->name }}</td>
 
                         <td class="text-center">
