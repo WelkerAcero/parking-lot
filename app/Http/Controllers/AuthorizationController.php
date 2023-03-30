@@ -27,8 +27,20 @@ class AuthorizationController extends Controller
     {
         $getAuthorizations = Authorization::with('user', 'vehicle.customer')
             ->whereRelation('vehicle.customer', 'status', 1)
-            ->paginate();
+            ->where('authorization_type', 'Entrance')
+            ->whereDate('created_at', date('Y-m-d'))
+            ->paginate(15);
         return $this->index($getAuthorizations);
+    }
+
+    public function getByIdAndDate($id, $date)
+    {
+        $data = Authorization::with('user', 'vehicle.customer')
+            ->whereRelation('vehicle.customer', 'ci', $id)
+            ->whereDate('created_at', $date)
+            ->paginate(15);
+
+        return $data;
     }
 
     public function getFilteredData(Request $request)
@@ -37,19 +49,21 @@ class AuthorizationController extends Controller
 
         if (isset($request->getById) || isset($request->getByDate)) {
             if (isset($request->getById) && isset($request->getByDate)) {
-                $customer = Customer::select('id')->where('ci', $request->getById)->where('created_at', '>=', $request->getByDate . ' 00:00:00')->get();
+                $authorizations = $this->getByIdAndDate($request->getById, $request->getByDate);
             } else if (isset($request->getByDate)) {
-                $customer = Customer::select('id')->where('created_at', '>=', $request->getByDate . ' 00:00:00')->get();
+                $authorizations = Authorization::with('user', 'vehicle.customer')
+                    ->whereDate('created_at', $request->getByDate)
+                    ->paginate(15);
             } else {
-                $customer = Customer::select('id')->where('ci', $request->getById)->get();
+                $authorizations = Authorization::with('user', 'vehicle.customer')
+                    ->whereRelation('vehicle.customer', 'ci', $request->getById)
+                    ->paginate(15);
             }
 
-            if (count($customer) === 0) {
+            if (count($authorizations) === 0) {
                 return $this->index('Error');
             }
 
-            $vehicle = Vehicle::where('customer_id', $customer[0]->id)->get();
-            $authorizations = Authorization::with('user', 'vehicle.customer')->where('vehicle_id', $vehicle[0]->id)->paginate(15);
             return $this->index($authorizations);
         }
     }
