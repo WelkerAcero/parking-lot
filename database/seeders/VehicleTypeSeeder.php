@@ -16,7 +16,7 @@ class VehicleTypeSeeder extends Seeder
 
     public function run()
     {
-        $typeEngines = array('Moto', 'Camioneta', 'Furgoneta', 'Carro Deportivo');
+        $typeEngines = array('Carro', 'Moto', 'Camioneta', 'Furgoneta', 'Carro Deportivo');
 
         for ($i = 0; $i < count($typeEngines); $i++) {
             $types[$i] = new VehicleType();
