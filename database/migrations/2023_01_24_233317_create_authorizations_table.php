@@ -15,8 +15,8 @@ class CreateAuthorizationsTable extends Migration
     {
         Schema::create('authorizations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('vehicle_id')->constrained('vehicles')->onUpdate('cascade');
-            $table->foreignId('authorized_by')->constrained('users')->onUpdate('cascade');
+            $table->foreignId('vehicle_id')->nullable()->constrained('vehicles')->onUpdate('cascade')->onDelete('set null');
+            $table->foreignId('authorized_by')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('set null');;
             $table->string('authorization_type', 10);
             $table->timestamps();
         });

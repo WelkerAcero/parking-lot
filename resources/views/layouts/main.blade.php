@@ -103,11 +103,11 @@
                                             Configuración
                                         </a>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">
+                                            <li><a class="dropdown-item" href="{{ route('user.index') }}">
                                                     Configuración de perfiles
                                                 </a>
                                             </li>
-                                            <li><a class="dropdown-item" href="#">
+                                            {{--                                             <li><a class="dropdown-item" href="#">
                                                     Editar mi perfil
                                                 </a>
                                             </li>
@@ -122,7 +122,7 @@
                                             <li><a class="dropdown-item" href="#">
                                                     Configurar tipos de motores
                                                 </a>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                     </li>
                                 </ul>

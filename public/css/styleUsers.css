@@ -1,0 +1,90 @@
+form button {
+    border: none;
+}
+
+.container--user {
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.user-content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.indicate-columns {
+    column-count: auto;
+    width: 32%;
+}
+
+.lista_programas {
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 15px -2px #000000;
+    background-color: aliceblue;
+    width: 75%;
+}
+
+.buttons-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.buttons-edit-delete {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.paginator-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.paginator-sec {
+    background-color: rgba(30, 27, 27, 0.448);
+    padding: 1% 5% 0% 5%;
+    margin: 5px;
+    border-radius: 20px;
+}
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 1300px) {
+    .container--user {
+        margin: auto;
+        flex-wrap: wrap;
+    }
+
+    .user-content {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .indicate-columns {
+        column-count: 1;
+        width: 100%;
+    }
+
+    .buttons-edit-delete {
+        width: auto;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .lista_programas {
+        margin: 10px;
+        border: 1px solid black;
+        border-radius: 10px;
+        box-shadow: 2px 2px 15px -2px #000000;
+        background-color: aliceblue;
+        width: 80%;
+    }
+}

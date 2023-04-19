@@ -86,12 +86,15 @@
 
                     </tbody>
                 </table>
+            </div>
 
-                <div class="paginator mt-5">
+            <div class="paginator-content">
+                <div class="paginator-sec mt-5">
                     {{ $authorizations->links() }}
                 </div>
             </div>
         </div>
     @endif
+
 
 @endsection

@@ -91,17 +91,13 @@ class AuthorizationController extends Controller
 
     public function create($customer_id)
     {
-        $customer = Customer::with('charge', 'vehicle')->where('ci', $customer_id)->get()[0];
-
-        if (!empty($customer)) {
+        try {
+            $customer = Customer::with('charge', 'vehicle')->where('ci', $customer_id)->get()[0];
             return view('authorization.create', compact('customer'));
-        } else {
-            $msgError = "No se encuentra registrado en el sistema";
+        } catch (\Throwable $th) {
+            $msgError = "El cliente no se encuentra registrado en el sistema";
             return view('authorization.create', compact('msgError'));
         }
-
-        /* $auth =  Authorization::with('vehicle.customer.charge')->where('vehicle_id', $vehicle_id)->get();
-        return view('authorization.create', ['auth' => $auth[0]]); */
     }
     /**
      * Store a newly created resource in storage.
@@ -111,8 +107,12 @@ class AuthorizationController extends Controller
      */
     public function store(AuthorizationRequest $request)
     {
-        Authorization::create($request->validated());
-        return redirect()->route('authorization.index');
+        try {
+            Authorization::create($request->validated());
+            return redirect()->route('authorization.index');
+        } catch (\Throwable $th) {
+            return $th;
+        }
     }
 
     /**

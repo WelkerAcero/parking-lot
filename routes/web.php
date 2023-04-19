@@ -5,8 +5,10 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehicleController;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,7 +24,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::controller(SessionController::class)->group(function () {
-    Route::get('/', 'index')->name('login');
+    Route::get('/', 'index', function () {
+        Artisan::call('cache:clear');
+        Artisan::call('config:cache');
+        Artisan::call('view:clear');
+    })->name('login');
     Route::get('/login', 'index')->name('login');
     Route::post('/login', 'authentication')->name('validate.user');
     Route::post('/logout', 'logout')->name('logout');
@@ -68,5 +74,16 @@ Route::controller(VehicleController::class)->group(function () {
     Route::delete('/vehicle/{vehicle}/delete',  'destroy')->name('vehicle.destroy');
     Route::get('/vehicle/{vehicle}/edit',  'edit')->name('vehicle.edit');
     Route::put('/vehicle/{vehicle}/update',  'update')->name('vehicle.update');
+    // Route::get('/vehicle/{id}/detalles',  'show')->name('vehicle.show');
+});
+
+
+Route::controller(UserController::class)->group(function () {
+    Route::get('/users', 'index')->name('user.index');
+    Route::get('/user/create',  'create')->name('user.create');
+    Route::post('/user/store',  'store')->name('user.store');
+    Route::delete('/user/{user}/delete',  'destroy')->name('user.destroy');
+    Route::get('/user/{user}/edit',  'edit')->name('user.edit');
+    Route::put('/user/{user}/update',  'update')->name('user.update');
     // Route::get('/vehicle/{id}/detalles',  'show')->name('vehicle.show');
 });

@@ -25,25 +25,28 @@ class AuthorizationRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        $customer = Customer::select('id', 'status')->where('ci', $this->customer_id)->get()[0];
-        $vehicleId = Vehicle::select('id')->where('customer_id', $customer->id)->get()[0];
+        try {
+            $customer = Customer::select('id', 'status')->where('ci', $this->customer_id)->get()[0];
+            $vehicleId = Vehicle::select('id')->where('customer_id', $customer->id)->get()[0];
 
-        if (isset($vehicleId->id)) {
-            if ($this->authorization_type === 'Entrance') {
-                $status = True;
+            if (isset($vehicleId->id)) {
+                if ($this->authorization_type === 'Entrance') {
+                    $status = True;
+                }
+                if ($this->authorization_type === 'Exit') {
+                    $status = False;
+                }
+
+                $customer->status = $status;
+                $customer->update([$customer->status]);
             }
-            if ($this->authorization_type === 'Exit') {
-                $status = False;
-            }
-
-            $customer->status = $status;
-            $customer->update([$customer->status]);
-
             $this->merge([
                 'vehicle_id' => $vehicleId->id,
                 'authorized_by' => Auth::user()->id,
                 'authorization_type' => $this->authorization_type,
             ]);
+        } catch (\Throwable $th) {
+            return $th;
         }
     }
 

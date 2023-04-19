@@ -48,16 +48,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /* 
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] =
             Hash::make($value, [
                 'rounds' => 10,
             ]);
-    } */
+    }
 
-    public function doc_type()
+    public function doctype()
     {
         return $this->belongsTo(DocType::class);
     }

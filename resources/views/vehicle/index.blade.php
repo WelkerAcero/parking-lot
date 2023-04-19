@@ -80,8 +80,12 @@
         @foreach ($vehicles as $item)
             <h1>{{ $item->vehicle_type }}</h1>
         @endforeach
-        <div class="paginator mt-5">
-            {{ $vehicles->links() }}
+
+        <div class="paginator-content">
+            <div class="paginator-sec mt-5">
+                {{ $vehicles->links() }}
+            </div>
         </div>
+
     </div>
 @endsection
