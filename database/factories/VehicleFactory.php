@@ -15,13 +15,13 @@ class VehicleFactory extends Factory
      */
     public function definition()
     {
-        return [
+        /*         return [
             'l_plate' => 'hro010',
             'color' => 'Blanco',
             'model' => '2015',
             'brand' => 'Hyundai',
             'customer_id' => Customer::factory(),
             'vehicle_type_id' => VehicleType::factory(),
-        ];
+        ]; */
     }
 }

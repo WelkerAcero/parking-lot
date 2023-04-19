@@ -18,7 +18,7 @@
                         <img src="{{ asset('img/icons/autorizar.svg') }}" width="30px">
                     </div>
                 </div>
-                @error('vehicle_id')
+                @error('l_plate')
                     <div class="alert alert-danger d-flex justify-content-center" role="alert">
                         <div class="d-flex flex-column">
                             <div class="d-flex">

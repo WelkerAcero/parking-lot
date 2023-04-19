@@ -35,8 +35,8 @@ class AuthorizationController extends Controller
 
     public function getByIdAndDate($id, $date)
     {
-        $data = Authorization::with('user', 'vehicle.customer')
-            ->whereRelation('vehicle.customer', 'ci', $id)
+        $data = Authorization::with('user',)
+            ->where('customer_ci', $id)
             ->whereDate('created_at', $date)
             ->paginate(15);
 
@@ -51,12 +51,12 @@ class AuthorizationController extends Controller
             if (isset($request->getById) && isset($request->getByDate)) {
                 $authorizations = $this->getByIdAndDate($request->getById, $request->getByDate);
             } else if (isset($request->getByDate)) {
-                $authorizations = Authorization::with('user', 'vehicle.customer')
+                $authorizations = Authorization::with('user')
                     ->whereDate('created_at', $request->getByDate)
                     ->paginate(15);
             } else {
-                $authorizations = Authorization::with('user', 'vehicle.customer')
-                    ->whereRelation('vehicle.customer', 'ci', $request->getById)
+                $authorizations = Authorization::with('user')
+                    ->where('customer_ci', $request->getById)
                     ->paginate(15);
             }
 
@@ -79,7 +79,7 @@ class AuthorizationController extends Controller
             return view('authorization.index', ['msgError' => 'Error: No existen registros en el filtro solicitado']);
         }
 
-        $authorizations = Authorization::with('user', 'vehicle.customer')->paginate(15);
+        $authorizations = Authorization::with('user')->paginate(15);
         return view('authorization.index', compact('authorizations'));
     }
 
@@ -111,7 +111,7 @@ class AuthorizationController extends Controller
             Authorization::create($request->validated());
             return redirect()->route('authorization.index');
         } catch (\Throwable $th) {
-            return $th;
+            return dd($th);
         }
     }
 

@@ -68,17 +68,10 @@
 
                         @foreach ($authorizations as $item)
                             <tr>
-                                <td>{{ $item->vehicle->l_plate }}</td>
-                                <td>{{ $item->vehicle->customer->ci }}</td>
-                                <td>{{ $item->vehicle->customer->name }}</td>
+                                <td>{{ $item->l_plate }}</td>
+                                <td>{{ $item->customer_ci }}</td>
+                                <td>{{ $item->customer_name }}</td>
                                 <td>{{ $item->user->name }}</td>
-                                {{-- <td>
-                                    @if ($item->status)
-                                        Si
-                                    @else
-                                        No
-                                    @endif
-                                </td> --}}
                                 <td>{{ $item->authorization_type }}</td>
                                 <td>{{ $item->created_at }}</td>
                             </tr>

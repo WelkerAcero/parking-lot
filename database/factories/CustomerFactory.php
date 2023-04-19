@@ -17,7 +17,7 @@ class CustomerFactory extends Factory
      */
     public function definition()
     {
-        return [
+        /*         return [
             'doctype_id' => 2,
             'ci' => $this->faker->numerify('##########'),
             'name' => Str::random(10),
@@ -27,6 +27,6 @@ class CustomerFactory extends Factory
             'url' => Str::random(10),
             'charge_id' => 1,
             'created_by' => User::factory(),
-        ];
+        ]; */
     }
 }

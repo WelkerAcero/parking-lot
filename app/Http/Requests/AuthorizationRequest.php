@@ -26,27 +26,38 @@ class AuthorizationRequest extends FormRequest
     protected function prepareForValidation()
     {
         try {
-            $customer = Customer::select('id', 'status')->where('ci', $this->customer_id)->get()[0];
-            $vehicleId = Vehicle::select('id')->where('customer_id', $customer->id)->get()[0];
+            $customer = Customer::select('id', 'ci', 'name', 'lastname', 'status')
+                ->where('ci', $this->customer_id)
+                ->get()[0];
+            $vehicle = Vehicle::select('id', 'l_plate')->where('customer_id', $customer->id)->get()[0];
 
-            if (isset($vehicleId->id)) {
-                if ($this->authorization_type === 'Entrance') {
-                    $status = True;
-                }
-                if ($this->authorization_type === 'Exit') {
-                    $status = False;
-                }
-
-                $customer->status = $status;
-                $customer->update([$customer->status]);
-            }
             $this->merge([
-                'vehicle_id' => $vehicleId->id,
+                'l_plate' => $vehicle->l_plate,
+                'customer_ci' => $customer->ci,
+                'customer_name' => $customer->name . ' ' . $customer->lastname,
+                'vehicle_id' => $vehicle->id,
                 'authorized_by' => Auth::user()->id,
                 'authorization_type' => $this->authorization_type,
             ]);
         } catch (\Throwable $th) {
             return $th;
+        }
+    }
+
+    protected function passedValidation(): void
+    {
+        $customer = Customer::select('id')->where('ci', $this->customer_id)->get()[0];
+        $vehicle = Vehicle::select('id')->where('customer_id', $customer->id)->get()[0];
+        if (isset($vehicle->id)) {
+            if ($this->authorization_type === 'Entrance') {
+                $status = True;
+            }
+            if ($this->authorization_type === 'Exit') {
+                $status = False;
+            }
+
+            $customer->status = $status;
+            $customer->update([$customer->status]);
         }
     }
 
@@ -58,6 +69,9 @@ class AuthorizationRequest extends FormRequest
     public function rules()
     {
         return [
+            'l_plate' => 'required',
+            'customer_ci' => 'required',
+            'customer_name' => 'required',
             'vehicle_id' => 'required',
             'authorized_by' => 'required',
             'authorization_type' => 'required',
@@ -67,7 +81,7 @@ class AuthorizationRequest extends FormRequest
     public function messages()
     {
         return [
-            'vehicle_id.required' => 'Este cliente no posee auto a su nombre - Cree un vehículo a su nombre antes de proceder',
+            'l_plate.required' => 'Este cliente no posee auto a su nombre - Cree un vehículo a su nombre antes de proceder',
         ];
     }
 }
